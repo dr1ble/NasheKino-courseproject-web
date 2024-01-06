@@ -87,6 +87,8 @@ a:hover {
 	color: #F99;
 }
 
+
+
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0px;
   margin-bottom: 0px;
@@ -378,9 +380,9 @@ Header Style
   height: 46px;
   border-radius: 23px;
   border: none;
-  color: #666;
+  color: #ffffff;
   font-size: 14px;
-  padding: 0px 15px 0px 45px;
+  padding: 0px 150px 0px 30px;
 }
 
 .header-area .main-nav #search i {
@@ -390,7 +392,7 @@ Header Style
   top: 16px;
   width: 18px;
   height: 18px;
-  font-size: 16px;
+  font-size: 25px;
 }
 
 .header-area .main-nav .logo {
@@ -442,7 +444,7 @@ Header Style
   font-weight: 400;
   font-size: 14px;
   text-transform: capitalize;
-  color: #666;
+  color: #ffffff;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
@@ -1726,3 +1728,7 @@ body {
     width: 16%;
   }
 }
+
+
+
+
