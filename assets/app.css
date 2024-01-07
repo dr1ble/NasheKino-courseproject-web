@@ -7,7 +7,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 100vh;
+    height: 80vh;
 }
 
 .card {
@@ -61,3 +61,4 @@ form {
     background: #e1fee3;
     color: #2c742b;
 }
+

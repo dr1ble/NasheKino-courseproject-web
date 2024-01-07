@@ -17,7 +17,7 @@ $user = currentUser();
         src="<?php echo $user['avatar'] ?>"
         alt="<?php echo $user['name'] ?>"
     >
-    <h1>Привет, <?php echo $user['full_name'] ?>!</h1>
+    <h1>Привет, <?php echo $user['name'] ?>!</h1>
     <form action="src/actions/logout.php" method="post">
         <button role="button">Выйти из аккаунта</button>
     </form>

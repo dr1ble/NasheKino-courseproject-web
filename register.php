@@ -4,40 +4,25 @@ checkGuest();
 ?>
 
 <!DOCTYPE html>
-<html lang="ru" data-theme="light">
+<html lang="ru" data-theme="dark">
 <?php include_once __DIR__ . '/components/head.php'?>
 <body>
 
-<form class="card" action="/src/actions/register.php" method="post" enctype="multipart/form-data">
+<form class="card" action="src/actions/register.php" method="post" enctype="multipart/form-data">
     <h2>Регистрация</h2>
 
-    <label for="full_name">
+    <label for="name">
         Имя
         <input
             type="text"
-            id="full_name"
-            name="full_name"
+            id="name"
+            name="name"
             placeholder="Иванов Иван"
-            value="<?php echo old('full_name') ?>"
-            <?php echo validationErrorAttr('full_name'); ?>
+            value="<?php echo old('name') ?>"
+            <?php echo validationErrorAttr('name'); ?>
         >
-        <?php if(hasValidationError('full_name')): ?>
-            <small><?php echo validationErrorMessage('full_name'); ?></small>
-        <?php endif; ?>
-    </label>
-
-    <label for="login">
-        Логин
-        <input
-            type="text"
-            id="login"
-            name="login"
-            placeholder="Ivanov123"
-            value="<?php echo old('login') ?>"
-            <?php echo validationErrorAttr('login'); ?>
-        >
-        <?php if(hasValidationError('login')): ?>
-            <small><?php echo validationErrorMessage('login'); ?></small>
+        <?php if(hasValidationError('name')): ?>
+            <small><?php echo validationErrorMessage('name'); ?></small>
         <?php endif; ?>
     </label>
 
@@ -112,7 +97,7 @@ checkGuest();
     >Продолжить</button>
 </form>
 
-<p>У меня уже есть <a href="index.php">аккаунт</a></p>
+<p>У меня уже есть <a href="/login.php">аккаунт</a></p>
 
 <?php include_once __DIR__ . '/components/scripts.php' ?>
 </body>

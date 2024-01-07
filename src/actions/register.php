@@ -5,8 +5,7 @@ require_once __DIR__ . '/../helpers.php';
 // Выносим данных из $_POST в отдельные переменные
 
 $avatarPath = null;
-$full_name = $_POST['full_name'] ?? null;
-$login = $_POST['login'] ?? null;
+$name = $_POST['name'] ?? null;
 $email = $_POST['email'] ?? null;
 $password = $_POST['password'] ?? null;
 $passwordConfirmation = $_POST['password_confirmation'] ?? null;
@@ -14,12 +13,8 @@ $avatar = $_FILES['avatar'] ?? null;
 
 // Выполняем валидацию полученных данных с формы
 
-if (empty($full_name)) {
-    setValidationError('full_name', 'Неверное имя');
-}
-
-if (empty($login)) {
-    setValidationError('login', 'Поле логина не заполненно');
+if (empty($name)) {
+    setValidationError('name', 'Неверное имя');
 }
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -49,8 +44,7 @@ if (!empty($avatar)) {
 // Если список с ошибками валидации не пустой, то производим редирект обратно на форму
 
 if (!empty($_SESSION['validation'])) {
-    setOldValue('full_name', $full_name);
-    setOldValue('login', $login);
+    setOldValue('name', $name);
     setOldValue('email', $email);
     redirect('/register.php');
 }
@@ -63,11 +57,10 @@ if (!empty($avatar)) {
 
 $pdo = getPDO();
 
-$query = "INSERT INTO users (full_name, login, email, avatar, password) VALUES (:full_name, :login, :email, :avatar, :password)";
+$query = "INSERT INTO users (name, email, avatar, password) VALUES (:name, :email, :avatar, :password)";
 
 $params = [
-    'full_name' => $full_name,
-    'login' => $login,
+    'name' => $name,
     'email' => $email,
     'avatar' => $avatarPath,
     'password' => password_hash($password, PASSWORD_DEFAULT)

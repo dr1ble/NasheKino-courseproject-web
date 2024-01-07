@@ -1,10 +1,11 @@
 <?php
 require_once __DIR__ . '/src/helpers.php';
+
 checkGuest();
 ?>
 
 <!DOCTYPE html>
-<html lang="ru" data-theme="light">
+<html lang="ru" data-theme="dark">
 <?php include_once __DIR__ . '/components/head.php'?>
 <body>
 
@@ -15,18 +16,18 @@ checkGuest();
         <div class="notice error"><?php echo getMessage('error') ?></div>
     <?php endif; ?>
 
-    <label for="login">
-        Логин
+    <label for="email">
+        Имя
         <input
             type="text"
-            id="login"
-            name="login"
-            placeholder="Ivanov123"
-            value="<?php echo old('login') ?>"
-            <?php echo validationErrorAttr('login'); ?>
+            id="email"
+            name="email"
+            placeholder="ivan@areaweb.su"
+            value="<?php echo old('email') ?>"
+            <?php echo validationErrorAttr('email'); ?>
         >
-        <?php if(hasValidationError('login')): ?>
-            <small><?php echo validationErrorMessage('login'); ?></small>
+        <?php if(hasValidationError('email')): ?>
+            <small><?php echo validationErrorMessage('email'); ?></small>
         <?php endif; ?>
     </label>
 
@@ -46,7 +47,7 @@ checkGuest();
     >Продолжить</button>
 </form>
 
-<p>У меня еще нет <a href="register.php">аккаунта</a></p>
+<p>У меня еще нет <a href="/register.php">аккаунта</a></p>
 
 <?php include_once __DIR__ . '/components/scripts.php' ?>
 </body>

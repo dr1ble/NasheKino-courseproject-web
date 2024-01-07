@@ -64,7 +64,7 @@ function uploadFile(array $file, string $prefix = ''): string
 
 function setMessage(string $key, string $message): void
 {
-    // $_SESSION['message'][$key] = $message;
+    $_SESSION['message'][$key] = $message;
 }
 
 function hasMessage(string $key): bool
@@ -88,16 +88,13 @@ function getPDO(): PDO
     }
 }
 
-function findUser(string $login): array|bool
+function findUser(string $email): array|bool
 {
     $pdo = getPDO();
 
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE login = :login");
-    $stmt->execute(['login' => $login]);
-    
-    $user = $stmt->fetch(\PDO::FETCH_ASSOC);
-
-    return $user !== false ? $user : [];
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+    $stmt->execute(['email' => $email]);
+    return $stmt->fetch(\PDO::FETCH_ASSOC);
 }
 
 
