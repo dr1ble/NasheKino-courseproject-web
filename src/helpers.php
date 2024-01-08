@@ -129,6 +129,14 @@ function checkAuth(): void
 function checkGuest(): void
 {
     if (isset($_SESSION['user']['id'])) {
-        redirect('/home.php');
+        redirect('/login.php');
+    }
+}
+function is_authenticated(): bool
+{
+    if (isset($_SESSION['user']['id'])) {
+        return true;
+    } else {
+        return false;
     }
 }

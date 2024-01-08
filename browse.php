@@ -2,6 +2,8 @@
 <html lang="en">
 
 <?php $pageTitle = 'Наше Кино - Обзор';
+require_once __DIR__ . '/src/helpers.php';
+$user = currentUser();
 include_once __DIR__ . '/components/head.php';
 include_once __DIR__ . '/components/menumain.php';?>
 
@@ -19,7 +21,7 @@ include_once __DIR__ . '/components/menumain.php';?>
     </div>
   </div>
   <!-- ***** Preloader End ***** -->
-  
+
   <div class="container">
     <div class="row">
       <div class="col-lg-12">

@@ -1384,7 +1384,7 @@ Game Details Style
 
 .game-details .main-border-button a {
   text-align: center;
-  width: 100%;
+  width: 50%;
 } 
 
 /* 
@@ -1541,6 +1541,24 @@ Profile Style
 
 .main-profile .main-info .main-border-button {
   margin-top: 25px;
+
+}
+
+.profile-exit-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #e75e8d;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.profile-exit-button:hover {
+  background-color: #ffffff;
+  color: #e75e8d;
 }
 
 .main-profile ul {

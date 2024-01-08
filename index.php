@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php $pageTitle = 'Наше Кино - Главная';
+<?php
+require_once __DIR__ . '/src/helpers.php';
+$user = currentUser();
+$pageTitle = 'Наше Кино - Главная';
 include_once __DIR__ . '/components/head.php';
 include_once __DIR__ . '/components/menumain.php';?>
 

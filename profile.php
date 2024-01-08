@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php $pageTitle = 'Наше Кино - Профиль';
+<?php 
+require_once __DIR__ . '/src/helpers.php';
+checkAuth();
+$user = currentUser();
+$pageTitle = 'Наше Кино - Профиль';
 include_once __DIR__ . '/components/head.php';
-include_once __DIR__ . '/components/menumain.php';?>
+include_once __DIR__ . '/components/menumain.php';
+?>
 
 <body>
   
@@ -31,24 +36,29 @@ include_once __DIR__ . '/components/menumain.php';?>
               <div class="main-profile ">
                 <div class="row">
                   <div class="col-lg-4">
-                    <img src="assets/images/profile.jpg" alt="" style="border-radius: 23px;">
+                    <img src="<?php echo $user['avatar'] ?>" alt="" style="border-radius: 23px;">
                   </div>
                   <div class="col-lg-4 align-self-center">
                     <div class="main-info header-text">
-                      <span>Offline</span>
-                      <h4>Alan Smithee</h4>
-                      <p>You Haven't Gone Live yet. Go Live By Touching The Button Below.</p>
-                      <div class="main-border-button">
-                        <a href="#">Start Live Stream</a>
+                      <p>Пользователь</p>
+                      <h4>
+                        <?php echo "Привет, " . $user['name'] . "!"; ?>
+                      </h4>
+                      <p>У вас нет истории просмотра</p>
+                      <br>
+                      <div class="main-button">
+                      <form action="src/actions/logout.php" method="post">
+                          <button role="button" class="profile-exit-button">Выйти из аккаунта</button>
+                      </form>
                       </div>
                     </div>
                   </div>
                   <div class="col-lg-4 align-self-center">
                     <ul>
-                      <li>Games Downloaded <span>3</span></li>
-                      <li>Friends Online <span>16</span></li>
-                      <li>Live Streams <span>None</span></li>
-                      <li>Clips <span>29</span></li>
+                      <li>Фильмов просмотрено <span>3</span></li>
+                      <li>Надо просмотреть<span>5</span></li>
+                      <li>Квизов пройдено <span>1</span></li>
+                      <!-- <li>Роль<span>Пользователь</span></li> -->
                     </ul>
                   </div>
                 </div>

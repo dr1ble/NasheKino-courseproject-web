@@ -48,7 +48,7 @@ checkGuest();
 </form>
 
 <p>У меня еще нет <a href="/register.php">аккаунта</a></p>
-<a href="/index.html" class="back-button">Назад на сайт</a>
+<a href="/index.php" class="back-button">Назад на сайт</a>
 
 <?php include_once __DIR__ . '/components/scripts.php' ?>
 </body>
