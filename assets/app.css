@@ -3,11 +3,18 @@ html[data-theme="light"] .card {
 }
 
 body {
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 80vh;
+    height: 90vh;
+}
+
+.form-container {
+    max-width: 400px; /* Максимальная ширина контейнера */
+    max-height: 80vh; /* Максимальная высота контейнера */
+    overflow: auto; /* Добавление прокрутки при необходимости */
 }
 
 .card {
@@ -21,26 +28,30 @@ body {
     background: #141e26;
     border-radius: 0.25rem;
     padding: 40px;
+    box-sizing: border-box;
+    min-height: 100%;
 }
 
 form {
-    min-width: 500px;
-    max-width: 700px;
+    min-width: 300px;
+    width: 50%; /* Ширина формы 100% */
 }
 
 .avatar {
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     display: block;
     object-fit: cover;
     border-radius: 50%;
 }
 
 .home {
+    overflow: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     row-gap: 20px;
+    padding: 100px;
     padding: 100px;
 }
 
@@ -62,3 +73,18 @@ form {
     color: #2c742b;
 }
 
+
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 16px;
+    background-color: hsl(195, 85%, 41%)    ;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+  
+  .back-button:hover {
+    background-color: hsl(195, 86%, 48%);
+  }

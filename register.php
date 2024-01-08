@@ -5,7 +5,7 @@ checkGuest();
 
 <!DOCTYPE html>
 <html lang="ru" data-theme="dark">
-<?php include_once __DIR__ . '/components/head.php'?>
+<?php include_once __DIR__ . '/components/headlogin.php'?>
 <body>
 
 <form class="card" action="src/actions/register.php" method="post" enctype="multipart/form-data">
@@ -98,6 +98,7 @@ checkGuest();
 </form>
 
 <p>У меня уже есть <a href="/login.php">аккаунт</a></p>
+<a href="/index.html" class="back-button">Назад на сайт</a>
 
 <?php include_once __DIR__ . '/components/scripts.php' ?>
 </body>

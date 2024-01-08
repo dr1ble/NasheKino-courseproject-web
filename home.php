@@ -8,7 +8,7 @@ $user = currentUser();
 
 <!DOCTYPE html>
 <html lang="ru" data-theme="light">
-<?php include_once __DIR__ . '/components/head.php'?>
+<?php include_once __DIR__ . '/components/headlogin.php'?>
 <body>
 
 <div class="card home">

@@ -1730,5 +1730,43 @@ body {
 }
 
 
+/* Profile dropdown */
 
+#profileDropdown {
+  display: none; /* Скрываем выпадающий список по умолчанию */
+}
+
+.profile-dropdown a {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 5px 10px !important;
+  text-decoration: none !important;
+  color: #333 !important;
+  margin-bottom: 5px !important;
+  margin-top: 5px !important;
+}
+
+.profile-menu {
+  position: relative !important;
+}
+
+.profile-menu a {
+  display: flex !important;
+  align-items: center !important;
+  text-decoration: none !important;
+  color: #f9f7f7 !important;
+  background-color: #666 !important;
+}
+
+.profile-menu img {
+  width: 25px !important;
+  height: 25px !important;
+  border-radius: 50% !important;
+  margin-left: 5px !important;
+}
+
+.profile-menu a:hover:not(img) {
+  color: rgb(113, 184, 111) !important;
+}
 
