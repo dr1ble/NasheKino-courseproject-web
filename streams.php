@@ -5,9 +5,37 @@
 require_once __DIR__ . '/src/helpers.php';
 $user = currentUser();
 include_once __DIR__ . '/components/head.php';
-include_once __DIR__ . '/components/menumain.php';?>
+include_once __DIR__ . '/components/menumain.php';
+require_once "src/config.php"; 
+
+$sql = "SELECT name FROM filmino ORDER BY RAND() LIMIT 5";
+$result = $conn->query($sql);
+
+$categories = array();
+
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $categories[] = $row['name'];
+    }
+}
+
+
+?>
 
 <body>
+  <style>
+    h6 a {
+    color: inherit;  /* Наследование цвета текста */
+    text-decoration: none;  /* Убираем стандартное подчеркивание */
+    transition: color 0.3s;  /* Плавное изменение цвета при наведении */
+    color: #fff !important;
+  }
+
+    h6 a:hover {
+    color: #e75e8d !important;  /* Цвет при наведении */
+  }
+
+  </style>
   
 <!-- ***** Preloader Start ***** -->
 <div id="js-preloader" class="js-preloader">
@@ -32,7 +60,7 @@ include_once __DIR__ . '/components/menumain.php';?>
             <div class="col-lg-8">
               <div class="featured-games header-text">
                 <div class="heading-section">
-                  <h4><em>Live</em> Streams</h4>
+                  <h4><em>Фильмы</em> Фильмы</h4>
                 </div>
                 <div class="owl-features owl-carousel">
                   <div class="item">
@@ -119,48 +147,49 @@ include_once __DIR__ . '/components/menumain.php';?>
             <div class="col-lg-4">
               <div class="top-streamers">
                 <div class="heading-section">
-                  <h4><em>Top</em> Streamers</h4>
+                  <h4><em>Категории</em> </h4>
                 </div>
                 <ul>
                   <li>
                     <span>01</span>
-                    <img src="assets/images/avatar-01.jpg" alt="" style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
-                    <h6><i class="fa fa-check"></i> LahutaM</h6>
-                    <div class="main-button">
+                    <img src="assets/images/<?php echo $categories[0]; ?>.svg" alt="" style="max-width: 36px; border-radius: 0%; margin-right: 15px;">
+                    <h6><i class="fa fa-check"></i> <a href="#"> <?php echo ucfirst($categories[0]); ?></a></h6>
+                    <!-- <div class="main-button">
                       <a href="#">Follow</a>
-                    </div>
+                    </div> -->
                   </li>
                   <li>
                     <span>02</span>
-                    <img src="assets/images/avatar-02.jpg" alt="" style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
-                    <h6><i class="fa fa-check"></i> Kengan</h6>
-                    <div class="main-button">
+                    <img src="assets/images/<?php echo $categories[1]; ?>.svg" alt="" style="max-width: 36px; border-radius: 0%; margin-right: 15px;">
+                    <h6><i class="fa fa-check"></i> <a href="#"> <?php echo ucfirst($categories[1]); ?></a></h6>
+                    <!-- <div class="main-button">
                       <a href="#">Follow</a>
-                    </div>
+                    </div> -->
                   </li>
                   <li>
                     <span>03</span>
-                    <img src="assets/images/avatar-03.jpg" alt="" style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
-                    <h6><i class="fa fa-check"></i> Areluwa</h6>
-                    <div class="main-button">
+                    <img src="assets/images/<?php echo $categories[2]; ?>.svg" alt="" style="max-width: 36px; border-radius: 0%; margin-right: 15px;">
+                    <h6><i class="fa fa-check"></i> <a href="#"> <?php echo ucfirst($categories[2]); ?></a></h6>
+                    <!-- <div class="main-button">
                       <a href="#">Follow</a>
-                    </div>
+                    </div> -->
                   </li>
                   <li>
                     <span>04</span>
-                    <img src="assets/images/avatar-04.jpg" alt="" style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
-                    <h6><i class="fa fa-check"></i> Omeg</h6>
-                    <div class="main-button">
+                    <!-- <img src="assets/images/avatar-04.jpg" alt="" style="max-width: 46px; border-radius: 50%; margin-right: 15px;"> -->
+                    <img src="assets/images/<?php echo $categories[3]; ?>.svg" alt="" style="max-width: 36px; border-radius: 0%; margin-right: 15px;">
+                    <h6><i class="fa fa-check"></i> <a href="#"> <?php echo ucfirst($categories[3]); ?></a></h6>
+                    <!-- <div class="main-button">
                       <a href="#">Follow</a>
-                    </div>
+                    </div> -->
                   </li>
                   <li>
                     <span>05</span>
-                    <img src="assets/images/avatar-01.jpg" alt="" style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
-                    <h6><i class="fa fa-check"></i> GangTeam</h6>
-                    <div class="main-button">
+                    <img src="assets/images/<?php echo $categories[4]; ?>.svg" alt="" style="max-width: 36px; border-radius: 0%; margin-right: 15px;">
+                    <h6><i class="fa fa-check"></i> <a href="#"> <?php echo ucfirst((string)$categories[4]); ?></a></h6>
+                    <!-- <div class="main-button">
                       <a href="#">Follow</a>
-                    </div>
+                    </div> -->
                   </li>
                 </ul>
               </div>

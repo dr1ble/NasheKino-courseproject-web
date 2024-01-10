@@ -164,6 +164,7 @@ p {
   transition: all .3s;
   position: relative;
   overflow: hidden;
+  margin-top: auto; /* Располагает кнопку внизу блока */
 }
 
 .main-button a:hover {
@@ -1500,6 +1501,7 @@ Top Streamers Style
   text-align: center;
   line-height: 20px;
   margin-right: 3px;
+  margin: 0 auto;
 }
 
 .top-streamers ul li .main-button {

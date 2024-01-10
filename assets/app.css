@@ -25,11 +25,12 @@ body {
     0.2085rem 0.417rem 2.502rem rgba(0, 0, 0, 0.04302),
     0.5rem 1rem 6rem rgba(0, 0, 0, 0.06),
     0 0 0 0.0625rem rgba(0, 0, 0, 0.015);
-    background: #141e26;
+    background: #27292a;
     border-radius: 0.25rem;
     padding: 40px;
     box-sizing: border-box;
     min-height: 100%;
+    margin-top: 200px;
 }
 
 form {
@@ -74,17 +75,23 @@ form {
 }
 
 
-.back-button {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    padding: 10px 16px;
-    background-color: hsl(195, 85%, 41%)    ;
+.back-button a {
+    font-size: 14px;
     color: #fff;
-    text-decoration: none;
-    border-radius: 4px;
-  }
-  
-  .back-button:hover {
-    background-color: hsl(195, 86%, 48%);
-  }
+    background-color: #e75e8d;
+    padding: 12px 30px;
+    display: inline-block;
+    border-radius: 25px;
+    font-weight: 400;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    transition: all .3s;
+    position: relative;
+    overflow: hidden;
+    margin-top: auto;
+}
+
+.back-button a:hover {
+  background-color: #fff;
+  color: #e75e8d;
+}
