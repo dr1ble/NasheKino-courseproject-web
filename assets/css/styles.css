@@ -331,7 +331,7 @@ Header Style
 */
 
 .background-header {
-  background-color: #fff !important;
+  background-color: #27292a!important;
   height: 70px!important;
   position: fixed!important;
   top: 0!important;
@@ -397,7 +397,7 @@ Header Style
 }
 
 .header-area .main-nav .logo {
-  border-right: 1px solid #27292a;
+  /* border-right: 1px solid #27292a; */
   flex-basis: 25%;
   margin-right: 5%;
   -webkit-transition: all 0.3s ease 0s;
@@ -612,6 +612,7 @@ Header Style
 
 .header-area.header-sticky {
   min-height: 70px;
+  background-color: #1f2122;
 }
 
 .header-area.header-sticky .nav li a.active {
@@ -1339,7 +1340,7 @@ Game Details Style
 
 .game-details .content .left-info ul li {
   color: #fff;
-  font-size: 14px;
+  font-size: 14.5px;
   margin-bottom: 3px;
 }
 
@@ -1789,4 +1790,20 @@ body {
 .profile-menu a:hover:not(img) {
   color: rgb(113, 184, 111) !important;
 }
+
+ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 15px;
+  }
+
+  .info {
+    display: block; /* Делаем блочным элементом */
+    font-weight: bold; /* Жирный шрифт для выделения */
+    color: #e75e8d; /* Замените этот цвет на нужный вам цвет текста */
+    margin-top: 5px;
+  }
 

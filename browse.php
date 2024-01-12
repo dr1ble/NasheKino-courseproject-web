@@ -5,7 +5,7 @@
 require_once __DIR__ . '/src/helpers.php';
 $user = currentUser();
 include_once __DIR__ . '/components/head.php';
-include_once __DIR__ . '/components/menumain.php';?>
+include_once __DIR__ . '/components/menumain.php'; ?>
 
 <body>
 
@@ -32,7 +32,7 @@ include_once __DIR__ . '/components/menumain.php';?>
             <div class="col-lg-8">
               <div class="featured-games header-text">
                 <div class="heading-section">
-                  <h4><em>Featured</em> Games</h4>
+                  <h4><em>Рекомендуемые</em> Фильмы</h4>
                 </div>
                 <div class="owl-features owl-carousel">
                   <div class="item">
@@ -119,7 +119,7 @@ include_once __DIR__ . '/components/menumain.php';?>
             <div class="col-lg-4">
               <div class="top-downloaded">
                 <div class="heading-section">
-                  <h4><em>Top</em> Downloaded</h4>
+                  <h4><em>Квизы</em></h4>
                 </div>
                 <ul>
                   <li>
@@ -154,7 +154,7 @@ include_once __DIR__ . '/components/menumain.php';?>
                   </li>
                 </ul>
                 <div class="text-button">
-                  <a href="profile.html">View All Games</a>
+                  <a href="profile.html">Просмотреть все</a>
                 </div>
               </div>
             </div>
@@ -165,7 +165,7 @@ include_once __DIR__ . '/components/menumain.php';?>
           <div class="start-stream">
             <div class="col-lg-12">
               <div class="heading-section">
-                <h4><em>How To Start Your</em> Live Stream</h4>
+                <h4><em>Как работает наш сервис</em></h4>
               </div>
               <div class="row">
                 <div class="col-lg-4">
@@ -173,8 +173,8 @@ include_once __DIR__ . '/components/menumain.php';?>
                     <div class="icon">
                       <img src="assets/images/service-01.jpg" alt="" style="max-width: 60px; border-radius: 50%;">
                     </div>
-                    <h4>Go To Your Profile</h4>
-                    <p>Cyborg Gaming is free HTML CSS website template provided by TemplateMo. This is Bootstrap v5.2.0 layout.</p>
+                    <h4>НАДО ЗАПОЛНИТЬ</h4>
+                    <p>ОПИСАНИЕ НАДО ЗАПОЛНИТЬ</p>
                   </div>
                 </div>
                 <div class="col-lg-4">
@@ -182,8 +182,9 @@ include_once __DIR__ . '/components/menumain.php';?>
                     <div class="icon">
                       <img src="assets/images/service-02.jpg" alt="" style="max-width: 60px; border-radius: 50%;">
                     </div>
-                    <h4>Live Stream Button</h4>
-                    <p>If you wish to support us, you can make a <a href="https://paypal.me/templatemo" target="_blank">small contribution via PayPal</a> to info [at] templatemo.com</p>
+                    <h4>НАДО ЗАПОЛНИТЬ</h4>
+                    <p>ОПИСАНИЕ НАДО ЗАПОЛНИТЬ <a href="https://paypal.me/templatemo"
+                        target="_blank">small contribution via PayPal</a></p>
                   </div>
                 </div>
                 <div class="col-lg-4">
@@ -191,13 +192,13 @@ include_once __DIR__ . '/components/menumain.php';?>
                     <div class="icon">
                       <img src="assets/images/service-03.jpg" alt="" style="max-width: 60px; border-radius: 50%;">
                     </div>
-                    <h4>You Are Live</h4>
-                    <p>You are not allowed to redistribute this template's downloadable ZIP file on any other template collection website.</p>
+                    <h4>НАДО ЗАПОЛНИТЬ</h4>
+                    <p>ОПИСАНИЕ НАДО ЗАПОЛНИТЬ </p>
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="main-button">
-                    <a href="profile.html">Go To Profile</a>
+                    <a href="profile.php">В профиль</a>
                   </div>
                 </div>
               </div>
@@ -231,11 +232,12 @@ include_once __DIR__ . '/components/menumain.php';?>
                   </div>
                   <div class="down-content">
                     <div class="avatar">
-                      <img src="assets/images/avatar-01.jpg" alt="" style="max-width: 46px; border-radius: 50%; float: left;">
+                      <img src="assets/images/avatar-01.jpg" alt=""
+                        style="max-width: 46px; border-radius: 50%; float: left;">
                     </div>
                     <span><i class="fa fa-check"></i> KenganC</span>
                     <h4>Just Talking With Fans</h4>
-                  </div> 
+                  </div>
                 </div>
               </div>
               <div class="col-lg-3 col-sm-6">
@@ -256,11 +258,12 @@ include_once __DIR__ . '/components/menumain.php';?>
                   </div>
                   <div class="down-content">
                     <div class="avatar">
-                      <img src="assets/images/avatar-02.jpg" alt="" style="max-width: 46px; border-radius: 50%; float: left;">
+                      <img src="assets/images/avatar-02.jpg" alt=""
+                        style="max-width: 46px; border-radius: 50%; float: left;">
                     </div>
                     <span><i class="fa fa-check"></i> LunaMa</span>
                     <h4>CS-GO 36 Hours Live Stream</h4>
-                  </div> 
+                  </div>
                 </div>
               </div>
               <div class="col-lg-3 col-sm-6">
@@ -281,11 +284,12 @@ include_once __DIR__ . '/components/menumain.php';?>
                   </div>
                   <div class="down-content">
                     <div class="avatar">
-                      <img src="assets/images/avatar-03.jpg" alt="" style="max-width: 46px; border-radius: 50%; float: left;">
+                      <img src="assets/images/avatar-03.jpg" alt=""
+                        style="max-width: 46px; border-radius: 50%; float: left;">
                     </div>
                     <span><i class="fa fa-check"></i> Areluwa</span>
                     <h4>Maybe Nathej Allnight Chillin'</h4>
-                  </div> 
+                  </div>
                 </div>
               </div>
               <div class="col-lg-3 col-sm-6">
@@ -306,11 +310,12 @@ include_once __DIR__ . '/components/menumain.php';?>
                   </div>
                   <div class="down-content">
                     <div class="avatar">
-                      <img src="assets/images/avatar-04.jpg" alt="" style="max-width: 46px; border-radius: 50%; float: left;">
+                      <img src="assets/images/avatar-04.jpg" alt=""
+                        style="max-width: 46px; border-radius: 50%; float: left;">
                     </div>
                     <span><i class="fa fa-check"></i> GangTm</span>
                     <h4>Live Streaming Till Morning</h4>
-                  </div> 
+                  </div>
                 </div>
               </div>
               <div class="col-lg-12">
@@ -326,14 +331,14 @@ include_once __DIR__ . '/components/menumain.php';?>
       </div>
     </div>
   </div>
-  
+
   <footer>
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <p>Копирайт © 2024 Наше кино. 
-          <br>Все права зарезирвированы. 
-          
+          <p>Копирайт © 2024 Наше кино.
+            <br>Все права зарезирвированы.
+
         </div>
       </div>
     </div>
@@ -350,8 +355,8 @@ include_once __DIR__ . '/components/menumain.php';?>
   <script src="assets/js/tabs.js"></script>
   <script src="assets/js/popup.js"></script>
   <script src="assets/js/custom.js"></script>
+  
 
-
-  </body>
+</body>
 
 </html>

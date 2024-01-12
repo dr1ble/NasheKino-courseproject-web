@@ -22,7 +22,7 @@ checkGuest();
             padding: 40px;
             box-sizing: border-box;
             min-height: 50%;
-            margin-top: 200px;
+            margin-top: 100px;
         }
     </style>
 
@@ -67,7 +67,7 @@ checkGuest();
 
 <p>У меня еще нет <a href="/register.php">аккаунта</a></p>
 <div class="main-button">
-    <br><br><a href="/index.php" class="back-button">Назад на сайт</a><br><br><br><br>
+    <br><a href="/index.php" class="back-button">на сайт</a>
 </div>
 <footer>
     <div class="container">

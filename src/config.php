@@ -19,4 +19,13 @@ if (!$conn) {
 
 // Выбор базы данных
 mysqli_select_db($conn, $database) or die("Cannot select DB");
+
+function getConnection(){
+    $conn = mysqli_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    return $conn;
+}
 ?>

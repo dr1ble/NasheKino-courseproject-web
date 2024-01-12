@@ -142,7 +142,13 @@ if ($result->num_rows > 0) {
                     </ul>
                   </div>
                 </div>
+              
               </div>
+            <!-- <div class="col-lg-12">
+              <div class="main-button" style="text-align: center;">
+                <a href="profile.html">К фильмотетке</a>
+              </div>
+            </div> -->
             </div>
             <div class="col-lg-4">
               <div class="top-streamers">
@@ -192,6 +198,11 @@ if ($result->num_rows > 0) {
                     </div> -->
                   </li>
                 </ul>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="main-button" style="text-align: center;">
+                <a href="profile.html">К фильмотетке</a>
               </div>
             </div>
           </div>
