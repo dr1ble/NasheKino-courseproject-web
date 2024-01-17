@@ -787,7 +787,7 @@ Banner Style
 
 .main-banner h4 {
   font-size: 45px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   margin-bottom: 25px;
 }
 
@@ -1797,7 +1797,7 @@ ul {
   }
 
   li {
-    margin-bottom: 15px;
+    margin-bottom: 0px;
   }
 
   .info {
@@ -1807,3 +1807,19 @@ ul {
     margin-top: 5px;
   }
 
+  .item img {
+    width: 100%; /* Ширина изображения займет 100% ширины родительского элемента */
+    height: 80%; /* Высота изображения займет 100% высоты родительского элемента */
+    object-fit: cover; /* Обеспечивает масштабирование и обрезку изображения, чтобы оно вместилось в контейнер */
+    object-position: center top; /* Выравнивание изображения по центру контейнера */
+}
+.btn-primary {
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+
+    .profile-exit-button {
+        font-size: 16px; /* Укажите желаемый размер шрифта в пикселях */
+    }

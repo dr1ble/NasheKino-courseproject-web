@@ -143,7 +143,7 @@
 
         .grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 5fr 5fr;
             column-gap: 15px;
         }
 
@@ -168,6 +168,19 @@
         body {
             margin: 0;
             padding: 0;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            background: #1f2122;
+            align-content: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            flex-direction: column;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
             display: flex;
             align-items: center;
             background: #1f2122;
@@ -179,10 +192,13 @@
 
         .submit {
             margin-top: 10px;
+            width: 100%;
         }
 
         .back-button {
             margin-top: 20px;
+
         }
+        
     </style>
 </head>

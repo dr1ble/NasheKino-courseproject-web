@@ -2,16 +2,12 @@
 
 require_once __DIR__ . '/../helpers.php';
 
-// Выносим данных из $_POST в отдельные переменные
-
 $avatarPath = null;
 $name = $_POST['name'] ?? null;
 $email = $_POST['email'] ?? null;
 $password = $_POST['password'] ?? null;
 $passwordConfirmation = $_POST['password_confirmation'] ?? null;
 $avatar = $_FILES['avatar'] ?? null;
-
-// Выполняем валидацию полученных данных с формы
 
 if (empty($name)) {
     setValidationError('name', 'Неверное имя');
@@ -41,15 +37,11 @@ if (!empty($avatar)) {
     }
 }
 
-// Если список с ошибками валидации не пустой, то производим редирект обратно на форму
-
 if (!empty($_SESSION['validation'])) {
     setOldValue('name', $name);
     setOldValue('email', $email);
     redirect('/register.php');
 }
-
-//  Загружаем аватарку, если она была отправлена в форме
 
 if (!empty($avatar)) {
     $avatarPath = uploadFile($avatar, 'avatar');
@@ -57,21 +49,34 @@ if (!empty($avatar)) {
 
 $pdo = getPDO();
 
-$query = "INSERT INTO users (name, email, avatar, password) VALUES (:name, :email, :avatar, :password)";
+$query = "INSERT INTO users (name, email, avatar, password, role) 
+          SELECT :name, :email, :avatar, :password, :role 
+          WHERE NOT EXISTS (SELECT 1 FROM users WHERE email = :email)";
 
 $params = [
     'name' => $name,
     'email' => $email,
     'avatar' => $avatarPath,
-    'password' => password_hash($password, PASSWORD_DEFAULT)
+    'password' => password_hash($password, PASSWORD_DEFAULT),
+    'role' => 0, 
 ];
 
 $stmt = $pdo->prepare($query);
 
 try {
     $stmt->execute($params);
+
+    if ($stmt->rowCount() === 0) {
+        setValidationError('email', 'Пользователь с такой почтой уже зарегистрирован');
+        redirect('/register.php');
+    } else {
+        // Редирект на профиль после успешной регистрации
+        $user = findUser($email);
+        $_SESSION['user']['id'] = $user['id'];
+        $_SESSION['user']['email'] = $user['email'];
+        $_SESSION['user']['role'] = $user['role'];
+        redirect('/profile.php');
+    }
 } catch (\Exception $e) {
     die($e->getMessage());
 }
-
-redirect('/');

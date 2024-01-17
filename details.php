@@ -10,13 +10,15 @@ $filmName = isset($_GET['film_name']) ? $_GET['film_name'] : '';
 
 // Получаем данные о фильме
 $filmDetails = getFilmDetails($filmName);
+$testId = getTestIdByFilm($filmName);
 $filmName .= " " . $filmDetails['Year'];
 $filmData = getFilmDataFromAPI($filmName);
-$firstData = $filmData['films'][0];
 
 $pageTitle = 'Наше Кино - ' . $filmDetails['CommonName'];
 include_once __DIR__ . '/components/head.php';
 include_once __DIR__ . '/components/menumain.php';
+
+$firstData = $filmData['films'][0];
 ?>
 
 <body>
@@ -57,19 +59,13 @@ include_once __DIR__ . '/components/menumain.php';
                 <div class="row">
                   <?php if (!empty($filmData['films'])): ?>
                     <div class="col-lg-4 offset-lg-4"">
-                      <img src=" <?php echo $filmData['films'][0]['posterUrlPreview'] ?>" alt=""
-                      style="border-radius: 23px;">
+                      <img src=" <?php echo $filmData['films'][0]['posterUrlPreview'] ?>"
+                      alt="Здесь должен быть постер (Если его нет - API не работает)" style="border-radius: 23px;">
                     </div>
-                    <!-- <div class="col-lg-4">
-                      <div class="thumb">
-                        <img src="<?php echo $filmData['films'][0]['posterUrl'] ?>" alt="" style="border-radius: 23px;">
-                          <a href="https://www.youtube.com/watch?v=r1b03uKWk_M" target="_blank"><i
-                              class="fa fa-play"></i></a>
-                        </div>
-                      </div> -->
+
                   <?php else: ?>
-                    <div class="col-lg-12">
-                      <p>Информации о постере нет.</p>
+                    <div class="col-lg-4 offset-lg-4"">
+                      <img src=" assets/images/no-poster1.jpg" alt="">
                     </div>
                   <?php endif; ?>
                 </div>
@@ -93,10 +89,13 @@ include_once __DIR__ . '/components/menumain.php';
                             <?php echo $filmDetails['CommonName'] ?>
                           </h4>
                           <span>
-                            <?php echo $filmDetails['Filmino'] ?>
-                            <br>рейтинг: <?php echo $firstData['rating'] ?>
+                            <?php
+                            echo (isset($filmDetails['Filmino']) ? $filmDetails['Filmino'] . '<br>' : '<br>') .
+                              (isset($firstData['rating']) && $firstData['rating'] !== "null" ? 'Рейтинг(КП): ' . $firstData['rating'] : 'Рейтинг(КП): нет данных');
+                            ?>
                           </span>
-                          
+
+
                         </div>
                         <ul>
                           <li><i class="fa fa-star"></i>
@@ -105,9 +104,15 @@ include_once __DIR__ . '/components/menumain.php';
                           <li><i class="fa fa-download"></i>
                             <?php echo $filmDetails['AgeRestrictions'] ?>
                           </li>
-                          <li><i class="fa fa-download"></i>
-                            Голосов: <?php echo $firstData['ratingVoteCount'] ?>
+                          <!-- <li><i class="fa fa-download"></i>
+                            Голосов:
+                            
+                          </li> -->
+                          <li>
+                            <i class="fa fa-download"></i>
+                            <?php echo (isset($firstData['ratingVoteCount']) ? 'Голосов: ' . $firstData['ratingVoteCount'] : ''); ?>
                           </li>
+
                         </ul>
                       </div>
                     </div>
@@ -129,136 +134,143 @@ include_once __DIR__ . '/components/menumain.php';
                         </ul>
                       </div>
                     </div>
-                    <!-- <div class="col-lg-4">
-                      <img src="assets/images/details-01.jpg" alt="" style="border-radius: 23px; margin-bottom: 30px;">
-                    </div>
-                    <div class="col-lg-4">
-                      <img src="assets/images/details-02.jpg" alt="" style="border-radius: 23px; margin-bottom: 30px;">
-                    </div>
-                    <div class="col-lg-4">
-                      <img src="assets/images/details-03.jpg" alt="" style="border-radius: 23px; margin-bottom: 30px;">
-                    </div> -->
+
                     <div class="col-lg-12">
-                      <?php if (!empty($filmData['films'])): ?>
-                        <p>
-                          <?php echo $firstData['description'] ?>
-                        </p>
-                      </div>
-                      <div class="col-lg-12 d-flex justify-content-center">
-                        <div class="main-button">
-                          <br>
-                          <a href="#">Перейти к викторине по фильму</a>
+                      <?php if (!empty($filmData['films']) && !empty($firstData['description'])): ?>
+                        <div class="col-lg-12">
+                          <p style="color: white;">
+                            <?php echo $firstData['description'] ?>
+                          </p>
                         </div>
-                      </div>
-                    <?php else: ?>
-                      <div class="col-lg-12">
-                        <p>Информации об описании фильма нет.</p>
-                      </div>
-                    <?php endif; ?>
+                        <div class="col-lg-12 d-flex justify-content-center">
+                          <div class="main-button">
+                            <br>
+                            <?php
+                            // Проверяем, есть ли тесты для данного фильма
+                            $filmTitle = $filmDetails['CommonName'];
+
+                            if (!empty($testId)) {
+              
+                              ?>
+                              <a href="main.php?id=<?php echo $testId ?>&film_name=<?php echo $filmTitle; ?>">Перейти к
+                                викторине</a>
+                            <?php } else { ?>
+                              <p>Для фильма 
+                                "<?php echo $filmTitle ?>" 
+                                пока нет викторин.
+                              </p>
+                            <?php } ?>
+                          </div>
+                        </div>
+                      <?php else: ?>
+                        <div class="col-lg-12">
+                          <p>Информации об описании фильма нет.</p>
+                        </div>
+                      <?php endif; ?>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <!-- ***** Details End ***** -->
+            <!-- ***** Details End ***** -->
 
-          <!-- ***** Other Start ***** -->
-          <div class="other-games">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="heading-section">
-                  <h4><em>Похожие</em> Фильмы</h4>
+            <!-- ***** Other Start ***** -->
+            <div class="other-games">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="heading-section">
+                    <h4><em>Похожие</em> Фильмы</h4>
+                  </div>
                 </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="item">
-                  <img src="assets/images/game-01.jpg" alt="" class="templatemo-item">
-                  <h4>Dota 2</h4><span>Sandbox</span>
-                  <ul>
-                    <li><i class="fa fa-star"></i> 4.8</li>
-                    <li><i class="fa fa-download"></i> 2.3M</li>
-                  </ul>
+                <div class="col-lg-6">
+                  <div class="item">
+                    <img src="assets/images/game-01.jpg" alt="" class="templatemo-item">
+                    <h4>Dota 2</h4><span>Sandbox</span>
+                    <ul>
+                      <li><i class="fa fa-star"></i> 4.8</li>
+                      <li><i class="fa fa-download"></i> 2.3M</li>
+                    </ul>
+                  </div>
                 </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="item">
-                  <img src="assets/images/game-02.jpg" alt="" class="templatemo-item">
-                  <h4>Dota 2</h4><span>Sandbox</span>
-                  <ul>
-                    <li><i class="fa fa-star"></i> 4.8</li>
-                    <li><i class="fa fa-download"></i> 2.3M</li>
-                  </ul>
+                <div class="col-lg-6">
+                  <div class="item">
+                    <img src="assets/images/game-02.jpg" alt="" class="templatemo-item">
+                    <h4>Dota 2</h4><span>Sandbox</span>
+                    <ul>
+                      <li><i class="fa fa-star"></i> 4.8</li>
+                      <li><i class="fa fa-download"></i> 2.3M</li>
+                    </ul>
+                  </div>
                 </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="item">
-                  <img src="assets/images/game-03.jpg" alt="" class="templatemo-item">
-                  <h4>Dota 2</h4><span>Sandbox</span>
-                  <ul>
-                    <li><i class="fa fa-star"></i> 4.8</li>
-                    <li><i class="fa fa-download"></i> 2.3M</li>
-                  </ul>
+                <div class="col-lg-6">
+                  <div class="item">
+                    <img src="assets/images/game-03.jpg" alt="" class="templatemo-item">
+                    <h4>Dota 2</h4><span>Sandbox</span>
+                    <ul>
+                      <li><i class="fa fa-star"></i> 4.8</li>
+                      <li><i class="fa fa-download"></i> 2.3M</li>
+                    </ul>
+                  </div>
                 </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="item">
-                  <img src="assets/images/game-02.jpg" alt="" class="templatemo-item">
-                  <h4>Dota 2</h4><span>Sandbox</span>
-                  <ul>
-                    <li><i class="fa fa-star"></i> 4.8</li>
-                    <li><i class="fa fa-download"></i> 2.3M</li>
-                  </ul>
+                <div class="col-lg-6">
+                  <div class="item">
+                    <img src="assets/images/game-02.jpg" alt="" class="templatemo-item">
+                    <h4>Dota 2</h4><span>Sandbox</span>
+                    <ul>
+                      <li><i class="fa fa-star"></i> 4.8</li>
+                      <li><i class="fa fa-download"></i> 2.3M</li>
+                    </ul>
+                  </div>
                 </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="item">
-                  <img src="assets/images/game-03.jpg" alt="" class="templatemo-item">
-                  <h4>Dota 2</h4><span>Sandbox</span>
-                  <ul>
-                    <li><i class="fa fa-star"></i> 4.8</li>
-                    <li><i class="fa fa-download"></i> 2.3M</li>
-                  </ul>
+                <div class="col-lg-6">
+                  <div class="item">
+                    <img src="assets/images/game-03.jpg" alt="" class="templatemo-item">
+                    <h4>Dota 2</h4><span>Sandbox</span>
+                    <ul>
+                      <li><i class="fa fa-star"></i> 4.8</li>
+                      <li><i class="fa fa-download"></i> 2.3M</li>
+                    </ul>
+                  </div>
                 </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="item">
-                  <img src="assets/images/game-01.jpg" alt="" class="templatemo-item">
-                  <h4>Dota 2</h4><span>Sandbox</span>
-                  <ul>
-                    <li><i class="fa fa-star"></i> 4.8</li>
-                    <li><i class="fa fa-download"></i> 2.3M</li>
-                  </ul>
+                <div class="col-lg-6">
+                  <div class="item">
+                    <img src="assets/images/game-01.jpg" alt="" class="templatemo-item">
+                    <h4>Dota 2</h4><span>Sandbox</span>
+                    <ul>
+                      <li><i class="fa fa-star"></i> 4.8</li>
+                      <li><i class="fa fa-download"></i> 2.3M</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
+            <!-- ***** Other End ***** -->
+
           </div>
-          <!-- ***** Other End ***** -->
-
         </div>
       </div>
     </div>
-  </div>
 
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <p>Копирайт © 2024 Наше кино. <br>Все права зарезервированы.</p>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <p>Копирайт © 2024 Наше кино. <br>Все права зарезервированы.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </footer>
+    </footer>
 
-  <!-- Scripts -->
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
-  <script src="assets/js/isotope.min.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
-  <script src="assets/js/tabs.js"></script>
-  <script src="assets/js/popup.js"></script>
-  <script src="assets/js/custom.js"></script>
+    <script src="assets/js/isotope.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/tabs.js"></script>
+    <script src="assets/js/popup.js"></script>
+    <script src="assets/js/custom.js"></script>
 
 </body>
 

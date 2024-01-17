@@ -2,7 +2,7 @@
 require_once('config.php');
 
 
-function getFilmDetails($filmName)
+function getFilmDetails()
 {
     $conn = getConnection();
 
@@ -10,11 +10,10 @@ function getFilmDetails($filmName)
         die("Ошибка подключения к базе данных: " . $conn->connect_error);
     }
 
-    $sql = "SELECT * FROM films WHERE CommonName = ?";
+    $sql = "SELECT * FROM films ORDER BY RAND() LIMIT 4";
 
     // Используем prepared statement для избежания SQL-инъекций
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $filmName);
 
     // Выполняем запрос
     $stmt->execute();
@@ -22,14 +21,17 @@ function getFilmDetails($filmName)
     // Получаем результат
     $result = $stmt->get_result();
 
+    // Получаем все строки результата в виде массива ассоциативных массивов
+    $filmsArray = $result->fetch_all(MYSQLI_ASSOC);
+
     // Закрываем prepared statement
     $stmt->close();
 
     // Закрываем соединение с базой данных
     $conn->close();
 
-    // Возвращаем данные о фильме
-    return $result->fetch_assoc();
+    // Возвращаем массив с данными о фильмах
+    return $filmsArray;
 }
 
 
@@ -109,36 +111,4 @@ function getFilmDataFromAPI($filmName)
 // print_r($filmDetails);
 // echo '</pre>';
 
-
-function getNFilms($limit)
-{
-    $conn = getConnection();
-
-    if ($conn->connect_error) {
-        die("Ошибка подключения к базе данных: " . $conn->connect_error);
-    }
-
-    // Используем prepared statement с параметром LIMIT
-    $sql = "SELECT * FROM films ORDER BY RAND() LIMIT ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $limit); // Привязываем значение LIMIT к параметру
-
-    // Выполняем запрос
-    $stmt->execute();
-
-    // Получаем результат
-    $result = $stmt->get_result();
-
-    // Получаем все строки результата в виде массива ассоциативных массивов
-    $filmsArray = $result->fetch_all(MYSQLI_ASSOC);
-
-    // Закрываем prepared statement
-    $stmt->close();
-
-    // Закрываем соединение с базой данных
-    $conn->close();
-
-    // Возвращаем массив с данными о фильмах
-    return $filmsArray;
-}
 ?>

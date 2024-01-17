@@ -6,12 +6,18 @@ require_once __DIR__ . '/src/helpers.php';
 $user = currentUser();
 $pageTitle = 'Наше Кино - Главная';
 include_once __DIR__ . '/components/head.php';
-include_once __DIR__ . '/components/menumain.php';?>
+include_once __DIR__ . '/components/menumain.php';
+require_once __DIR__ . '/src/filminfo.php';
+
+// Получаем данные о фильме
+$filmDetails = getNFilms(4);
+// var_dump($filmDetails);
+?>
 
 <body>
 
-<!-- ***** Preloader Start ***** -->
-<div id="js-preloader" class="js-preloader">
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
     <div class="preloader-inner">
       <span class="dot"></span>
       <div class="dots">
@@ -33,10 +39,10 @@ include_once __DIR__ . '/components/menumain.php';?>
             <div class="row">
               <div class="col-lg-7">
                 <div class="header-text">
-                  <h6>Добро пожаловать в рекомендательный сервис <br><b>
+                  <h6>Добро пожаловать в сервис популяризации отечественного кино <br><b>
                       <h5>Наше Кино</h5>
                     </b></h6>
-                  <h4><em>Начните </em>свое знакомство с русским кино <br>здесь</h4>
+                  <h4><em>Начните </em>свое знакомство<br>здесь</h4>
                   <div class="main-button">
                     <a href="browse.html">Вперёд</a>
                   </div>
@@ -51,62 +57,42 @@ include_once __DIR__ . '/components/menumain.php';?>
             <div class="row">
               <div class="col-lg-12">
                 <div class="heading-section">
-                  <h4><em>Популярно</em> сейчас</h4>
+                  <h4><em>Стоит</em> посмотреть</h4>
                 </div>
                 <div class="row">
-                  <div class="col-lg-3 col-sm-6">
-                    <div class="item">
-                      <img src="assets/images/popular-film-01.jpg" alt="">
-                      <!-- Нежданный гость - CommonName (Название) Военная мелодрама - Filmino (Сведение о фильме) -->
-                      <h4>Нежданный гость<br><span>Военная мелодрама</span></h4>
-                      <ul>
-                        <!-- 1972 - Year (Год выпуска)-->
-                        <li><i class="fa fa-star"></i> 1972</li>
-                        <!-- 12+ - AgeRestrictions (Возрастные ограничения)-->
-                        <li><i class="fa fa-download"></i>12+</li>
-                      </ul>
+                  <?php for ($i = 0; $i <= 3; $i++): ?>
+                    <div class="col-lg-3 col-sm-6">
+                      <div class="item" style="height: 580px;">
+                        <?php
+                        $filmName = $filmDetails[$i]['CommonName'] . " " . $filmDetails[$i]['Year'];
+                        $filmData = getFilmDataFromAPI($filmName);
+
+                        // Check if the posterUrlPreview exists before using it
+                        $posterUrl = isset($filmData['films'][0]['posterUrlPreview']) ? $filmData['films'][0]['posterUrlPreview'] : 'assets/images/no-poster1.jpg';
+                        ?>
+                        <a href="details.php?film_name=<?php echo $filmDetails[$i]['CommonName']; ?>">
+                          <img src="<?php echo $posterUrl; ?>" alt="">
+                        </a>
+                        <!-- Нежданный гость - CommonName (Название) Военная мелодрама - Filmino (Сведение о фильме) -->
+                        <h4 style="width: 150px;">
+                          <?php echo $filmDetails[$i]['CommonName']; ?><br><span>
+                            <?php echo $filmDetails[$i]['Filmino']; ?>
+                          </span>
+                        </h4>
+                        <ul>
+                          <!-- 1972 - Year (Год выпуска)-->
+                          <li><i class="fa fa-star"></i>
+                            <?php echo $filmDetails[$i]['Year']; ?>
+                          </li>
+                          <!-- 12+ - AgeRestrictions (Возрастные ограничения)-->
+                          <li><i class="fa fa-download"></i>
+                            <?php echo $filmDetails[$i]['AgeRestrictions']; ?>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-lg-3 col-sm-6">
-                    <div class="item">
-                      <img src="assets/images/popular-film-02.jpg" alt="">
-                      <!-- Нежданный гость - CommonName (Название) Военная мелодрама - Filmino (Сведение о фильме) -->
-                      <h4>Не хочу быть взрослым<br><span>Комедия</span></h4>
-                      <ul>
-                        <!-- 1972 - Year (Год выпуска)-->
-                        <li><i class="fa fa-star"></i> 1982</li>
-                        <!-- 12+ - AgeRestrictions (Возрастные ограничения)-->
-                        <li><i class="fa fa-download"></i>12+</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-sm-6">
-                    <div class="item">
-                      <img src="assets/images/popular-film-03.jpg" alt="">
-                      <!-- Нежданный гость - CommonName (Название) Военная мелодрама - Filmino (Сведение о фильме) -->
-                      <h4>Падение Кондора<br><span>Драма</span></h4>
-                      <ul>
-                        <!-- 1972 - Year (Год выпуска)-->
-                        <li><i class="fa fa-star"></i>1982</li>
-                        <!-- 12+ - AgeRestrictions (Возрастные ограничения)-->
-                        <li><i class="fa fa-download"></i>16+</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-sm-6">
-                    <div class="item">
-                      <img src="assets/images/popular-film-04.jpg" alt="">
-                      <!-- Нежданный гость - CommonName (Название) Военная мелодрама - Filmino (Сведение о фильме) -->
-                      <h4>Сержант Фетисов<br><span>Документальный</span></h4>
-                      <ul>
-                        <!-- 1972 - Year (Год выпуска)-->
-                        <li><i class="fa fa-star"></i> 1961</li>
-                        <!-- 12+ - AgeRestrictions (Возрастные ограничения)-->
-                        <li><i class="fa fa-download"></i>12+</li>
-                      </ul>
-                    </div>
-                  </div>
-                  
+                  <?php endfor; ?>
+
                   <div class="col-lg-12">
                     <div class="main-button">
                       <a href="browse.html">Подробнее</a>

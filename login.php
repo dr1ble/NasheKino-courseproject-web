@@ -9,7 +9,7 @@ checkGuest();
 <?php include_once __DIR__ . '/components/headlogin.php'?>
 <body>
     <style>
-        .card {
+        .cardLogin {
             box-shadow: 0.0145rem 0.029rem 0.174rem rgba(0, 0, 0, 0.01698),
                 0.0335rem 0.067rem 0.402rem rgba(0, 0, 0, 0.024),
                 0.0625rem 0.125rem 0.75rem rgba(0, 0, 0, 0.03),
@@ -21,19 +21,19 @@ checkGuest();
             border-radius: 0.25rem;
             padding: 40px;
             box-sizing: border-box;
-            min-height: 50%;
+            min-height: 45%;
             margin-top: 100px;
         }
     </style>
 
-<form class="card" action="src/actions/login.php" method="post">
+<form class="cardLogin" action="src/actions/login.php" method="post">
     <h2 style="color: #e75e8d;">Вход</h2>
 
     <?php if(hasMessage('error')): ?>
         <div class="notice error"><?php echo getMessage('error') ?></div>
     <?php endif; ?>
 
-    <div class="form-group">
+    <div class="form-group" >
     <label for="email"><br>Имя</label>
     <input
         type="text"

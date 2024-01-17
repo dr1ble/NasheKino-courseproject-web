@@ -23,12 +23,23 @@ checkGuest();
             min-height: 80%;
             margin-top: 100px;
         }
+        body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    background: #1f2122;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+}
         
     </style>
 
 <form class="card" action="src/actions/register.php" method="post" enctype="multipart/form-data">
     <h2 style="color: #e75e8d;">Регистрация</h2>
-    <div class="form-group">
+    <div class="form-group" >
     <label for="name"><br>
         Имя
         <input

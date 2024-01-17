@@ -97,6 +97,104 @@ function findUser(string $email): array|bool
     return $stmt->fetch(\PDO::FETCH_ASSOC);
 }
 
+function countUserScore(string $user_id): array|bool
+{
+    try {
+        $pdo = getPDO();
+
+        $sql = "SELECT 
+                    user_id,
+                    COUNT(DISTINCT test_id) AS unique_tests,
+                    SUM(score) AS total_score
+                FROM 
+                    user_test_results
+                WHERE 
+                    (user_id, score) IN (
+                        SELECT 
+                            user_id, MAX(score)
+                        FROM 
+                            user_test_results
+                        GROUP BY 
+                            user_id, test_id
+                    )
+                    AND user_id = :user_id
+                GROUP BY 
+                    user_id";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+
+        if ($stmt->execute()) {
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // Проверка, пустой ли набор результатов
+            if (!$result) {
+                // Возвращаем значения по умолчанию
+                return [
+                    'user_id' => $user_id,
+                    'unique_tests' => 0,
+                    'total_score' => 0,
+                ];
+            }
+
+            return $result;
+        } else {
+            // Запись ошибки в лог или обработка по необходимости
+            error_log("Ошибка выполнения SQL-запроса: " . implode(" ", $stmt->errorInfo()));
+
+            // Возвращаем значения по умолчанию
+            return [
+                'user_id' => $user_id,
+                'unique_tests' => 0,
+                'total_score' => 0,
+            ];
+        }
+    } catch (PDOException $e) {
+        // Запись исключения в лог или обработка по необходимости
+        error_log("Исключение PDO: " . $e->getMessage());
+
+        // Возвращаем значения по умолчанию
+        return [
+            'user_id' => $user_id,
+            'unique_tests' => 9,
+            'total_score' => 9,
+        ];
+    }
+}
+
+
+function getTestIdByFilm(string $film): ?int
+{
+    try {
+        $pdo = getPDO();
+
+        $sql = "SELECT id FROM tests WHERE film_name = :film LIMIT 1";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':film', $film, PDO::PARAM_STR);
+
+        if ($stmt->execute()) {
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($result && isset($result['id'])) {
+                return (int) $result['id'];
+            }
+        }
+
+        return null;
+    } catch (PDOException $e) {
+        // Запись исключения в лог или обработка по необходимости
+        error_log("Исключение PDO: " . $e->getMessage());
+        return null;
+    }
+}
+// $testTitle = "Афоня";
+// $testId = getTestIdByfILM($testTitle);
+
+// if ($testId !== null) {
+//     echo "ID теста '{$testTitle}': {$testId}";
+// } else {
+//     echo "Тест с названием '{$testTitle}' не найден.";
+// }
 
 function currentUser(): array|false
 {
@@ -140,3 +238,17 @@ function is_authenticated(): bool
         return false;
     }
 }
+
+
+
+// $user = currentUser();
+// $stats = countUserScore($user['id']);
+
+// if ($result !== false) {
+//     // Вывод результатов
+//     echo "User ID: {$result['user_id']}\n";
+//     echo "Unique Tests: {$result['unique_tests']}\n";
+//     echo "Total Score: {$result['total_score']}\n";
+// } else {
+//     echo "Ошибка выполнения запроса.\n";
+// }
