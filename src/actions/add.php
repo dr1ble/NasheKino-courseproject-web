@@ -89,7 +89,7 @@ require_once 'src\filminfo.php';
                             <input type="text" name="title" id="title" class="form-control"><br>
                             <label for="title" class="form-label">Название фильма</label>
                             <input type="text" name="film" id="film" class="form-control mt-2"
-                                placeholder="Название фильма" required/>
+                                placeholder="Название фильма" required />
                             <div id="filmList"></div>
                             <div id="filmCards">
 
@@ -163,6 +163,11 @@ require_once 'src\filminfo.php';
                 <div class="card mt-4 mb-4">
                     <div class="card-body text-center">
                         <button type="submit" class="btn btn-success">Сохранить</button>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: center;">
+                    <div class="main-button">
+                        <br><a href="admin.php" class="back-button" style="text-decoration: none;">Назад</a>
                     </div>
                 </div>
     </form>
