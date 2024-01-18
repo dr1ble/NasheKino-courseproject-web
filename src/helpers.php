@@ -6,7 +6,7 @@ require_once __DIR__ . '/config.php';
 
 function debug($data)
 {
-    echo '<pre>' . print_r($data, 1). '</pre>';
+    echo '<pre>' . print_r($data, 1) . '</pre>';
 }
 
 function redirect(string $path)
@@ -233,7 +233,7 @@ function getFilmCountByCategory(): ?array
     try {
         $pdo = getPDO();
 
-        $sql = "SELECT filmino, COUNT(*) AS film_count FROM films GROUP BY filmino";
+        $sql = "SELECT COALESCE(filmino, 'Категория не указана') AS category, COUNT(*) AS film_count FROM films GROUP BY filmino";
         $stmt = $pdo->prepare($sql);
 
         if ($stmt->execute()) {
@@ -242,7 +242,7 @@ function getFilmCountByCategory(): ?array
             if ($results) {
                 $filmCounts = [];
                 foreach ($results as $row) {
-                    $filmCounts[$row['filmino']] = (int) $row['film_count'];
+                    $filmCounts[$row['category']] = (int) $row['film_count'];
                 }
                 return $filmCounts;
             }

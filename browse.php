@@ -129,20 +129,28 @@ $values = implode(',', getFilmCountByCategory());
           <div class="row">
             <div class="col-lg-12">
               <div class="heading-section text-center">
-                <h4>О данных</h4>
+                <h4>Об используемых данных</h4>
+                <h5> Всего в датасете представлены записи о 1972 фильмах, которые распределены по 64 категориям. <br>
+                </h5>
+                <br>
               </div>
-              <div>
-                <canvas id="myChart"></canvas>
-              </div>
+
 
             </div>
-            <div class="col-lg-8">
+            <div class="col-lg-12">
 
-              <div class="featured-games header-text">
+              <div class="featured-games header-text text-center">
                 <div class="heading-section">
-                  <h4><em></em> Фильмы</h4>
+                  <h4><em></em> Количество фильмов по каждой категории</em></h4>
+                  <div>
+                    <h5>На данной диаграмме представлены данные о количестве фильмов каждой категории. При наведении на
+                      каждый
+                      участок отображается подробная информация.
+                      <br>
+                      <br><canvas id="myChart"></canvas>
+                  </div>
                 </div>
-                <div class="owl-features owl-carousel">
+                <!-- <div class="owl-features owl-carousel">
                   <div class="item">
                     <div class="thumb">
                       <img src="assets/images/featured-01.jpg" alt="">
@@ -221,10 +229,10 @@ $values = implode(',', getFilmCountByCategory());
                       <li><i class="fa fa-download"></i> 2.3M</li>
                     </ul>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
-            <div class="col-lg-4">
+            <!-- <div class="col-lg-4">
               <div class="top-downloaded">
                 <div class="heading-section">
                   <h4>Викторины</h4>
@@ -265,7 +273,7 @@ $values = implode(',', getFilmCountByCategory());
                   <a href="profile.html">Просмотреть все</a>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
           <!-- ***** Featured Games End *****
 
@@ -310,7 +318,7 @@ $values = implode(',', getFilmCountByCategory());
     const autocolors = window['chartjs-plugin-autocolors'];
     Chart.register(autocolors);
     const labels = [<?= $labels ?>];
-  
+
 
     const data = {
       labels: labels,
@@ -318,7 +326,7 @@ $values = implode(',', getFilmCountByCategory());
         {
           label: 'Количество фильмов',
           // data: [11, 16, 7, 3, 14],
-          
+
           borderColor: 'rgba(254, 98, 108, 0.437)',
           hoverOffset: 4,
           data: [<?= $values ?>],
@@ -338,7 +346,7 @@ $values = implode(',', getFilmCountByCategory());
             position: 'bottom'
           },
           title: {
-            display: true,
+            display: false,
             text: 'Количество фильмов в каждой категории'
           },
           autocolors: {
