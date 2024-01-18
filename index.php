@@ -105,7 +105,7 @@ $filmDetails = getNFilms(4);
           <!-- ***** Most Popular End ***** -->
 
           <!-- ***** Gaming Library Start ***** -->
-          <div class="gaming-library">
+          <!-- <div class="gaming-library">
             <div class="col-lg-12">
               <div class="heading-section">
                 <h4><em>Ваша</em> фильмотека</h4>
@@ -119,7 +119,6 @@ $filmDetails = getNFilms(4);
                   <li>
                     <h4>Дата просмотра</h4><span>05/01/2024</span>
                   </li>
-                  <!-- Duration - Длительность (MAIN TABLE) -->
                   <li>
                     <h4>Длительность</h4><span>1:36:50 </span>
                   </li>
@@ -157,7 +156,7 @@ $filmDetails = getNFilms(4);
                 <a href="profile.html">К фильмотетке</a>
               </div>
             </div>
-          </div>
+          </div> -->
           <!-- ***** Gaming Library End ***** -->
         </div>
       </div>

@@ -32,6 +32,36 @@ function getFilmDetails($filmName)
     return $result->fetch_assoc();
 }
 
+function getAllFilms()
+{
+    $conn = getConnection();
+
+    if ($conn->connect_error) {
+        die("Ошибка подключения к базе данных: " . $conn->connect_error);
+    }
+
+    $sql = "SELECT * FROM films";
+
+    // Выполняем запрос
+    $result = $conn->query($sql);
+
+    // Проверяем наличие результатов
+    if ($result === false) {
+        die("Ошибка выполнения запроса: " . $conn->error);
+    }
+
+    // Закрываем соединение с базой данных
+    $conn->close();
+
+    // Возвращаем данные о фильмах в виде массива ассоциативных массивов
+    $films = array();
+    while ($row = $result->fetch_assoc()) {
+        $films[] = $row;
+    }
+
+    return $films;
+}
+
 
 // function fetchDataFromAPI($api_url, $api_key)
 // {

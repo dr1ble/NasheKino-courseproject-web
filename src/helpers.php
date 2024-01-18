@@ -194,6 +194,8 @@ function getTestIdByFilm(string $film): ?int
 }
 
 
+
+
 // $testTitle = "Афоня";
 // $testId = getTestIdByfILM($testTitle);
 
@@ -202,6 +204,45 @@ function getTestIdByFilm(string $film): ?int
 // } else {
 //     echo "Тест с названием '{$testTitle}' не найден.";
 // }
+
+
+function getPopularFilmsArray($n, $filmDetails)
+{
+    $popularFilms = [];
+
+    // Проходимся по $filmDetails и получаем данные о фильме из API КиноПоиска
+    foreach ($filmDetails as $i => $film) {
+        $filmName = $film['CommonName'] . " " . $film['Year'];
+        $filmData = getFilmDataFromAPI($filmName);
+
+        // Добавляем данные о фильме в массив
+        $popularFilms[] = [
+            'CommonName' => $film['CommonName'],
+            'Year' => $film['Year'],
+            'Rating' => $filmData['films'][0]['rating'], // Предполагая, что в ответе API есть ключ 'rating'
+            'VoteCount' => $filmData['films'][0]['ratingVoteCount'], // Предполагая, что в ответе API есть ключ 'ratingVoteCount'
+        ];
+    }
+
+    // Сортируем фильмы по рейтингу и количеству голосов
+    usort($popularFilms, function ($a, $b) {
+        // Сортируем сначала по рейтингу, если равны, то по количеству голосов
+        if ($a['Rating'] == $b['Rating']) {
+            return $b['VoteCount'] - $a['VoteCount'];
+        }
+        return $b['Rating'] - $a['Rating'];
+    });
+
+    // Возвращаем топ N фильмов
+    return array_slice($popularFilms, 0, $n);
+}
+
+// // Пример: Получаем топ 4 популярных фильмов в виде массива
+// $topFilmsArray = getPopularFilmsArray(4, $filmDetails);
+
+// // Теперь $topFilmsArray содержит данные о топовых фильмах
+// print_r($topFilmsArray);
+
 
 function getCategories(): ?array
 {
@@ -233,7 +274,8 @@ function getFilmCountByCategory(): ?array
     try {
         $pdo = getPDO();
 
-        $sql = "SELECT COALESCE(filmino, 'Категория не указана') AS category, COUNT(*) AS film_count FROM films GROUP BY filmino";
+        $sql = "SELECT COALESCE(filmino, 'Категория не указана') AS category, COUNT(*) AS film_count FROM films GROUP BY
+filmino";
         $stmt = $pdo->prepare($sql);
 
         if ($stmt->execute()) {
@@ -305,10 +347,10 @@ function is_authenticated(): bool
 // $stats = countUserScore($user['id']);
 
 // if ($result !== false) {
-//     // Вывод результатов
-//     echo "User ID: {$result['user_id']}\n";
-//     echo "Unique Tests: {$result['unique_tests']}\n";
-//     echo "Total Score: {$result['total_score']}\n";
+// // Вывод результатов
+// echo "User ID: {$result['user_id']}\n";
+// echo "Unique Tests: {$result['unique_tests']}\n";
+// echo "Total Score: {$result['total_score']}\n";
 // } else {
-//     echo "Ошибка выполнения запроса.\n";
+// echo "Ошибка выполнения запроса.\n";
 // }
