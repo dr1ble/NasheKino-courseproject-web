@@ -31,7 +31,7 @@ body {
 .card-body,
 .card-header {
   background-color: #f5f5f5;
-  border-color: #e75e8d;
+  border-color: #ff414e;
 }
 
 .card {
@@ -40,7 +40,7 @@ body {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #e75e8d;
+  background-color: #ff414e;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
@@ -51,13 +51,13 @@ body {
 
 .btn-primary {
   color: #fff !important;
-  background-color: #e75e8d !important;
-  border-color: #e75e8d !important;
+  background-color: #ff414e !important;
+  border-color: #ff414e !important;
 }
 
 .btn-primary:hover {
   background-color: #fff !important;
-  color: #e75e8d !important;
+  color: #ff414e !important;
 }
 .form-control,
 .primary {
@@ -70,7 +70,7 @@ body {
   color: #090202;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid #e75e8d !important;
+  border: 1px solid #ff414e !important;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -82,17 +82,17 @@ body {
 .primary:focus {
   color: #090202;
   background-color: #fff;
-  border-color: #e75e8d !important;
+  border-color: #ff414e !important;
   outline: 0;
-  box-shadow: 0 0 0 0.1rem #e75e8d !important;
+  box-shadow: 0 0 0 0.1rem #ff414e !important;
 }
 
 .btn:focus {
   color: #fff;
   background-color: #fff;
-  border-color: #e75e8d !important;
+  border-color: #ff414e !important;
   outline: 0;
-  box-shadow: 0 0 0 0.15rem #e75e8d !important;
+  box-shadow: 0 0 0 0.15rem #ff414e !important;
 }
 
 .btn-light {
@@ -137,32 +137,32 @@ body {
 }
 
 .list-group-item a {
-    font-size: 18px;
+  font-size: 18px;
   text-decoration: none;
   font-weight: bold;
-  
-  color: #e75e8d;
+
+  color: #ff414e;
 }
 
 .list-group-item a:hover {
-  color: #ff91b2; /* Цвет при наведении */
+  color: #fe626c; /* Цвет при наведении */
 }
 
 .auth-link {
   text-decoration: none;
   font-weight: bold;
-  color: #e75e8d;
+  color: #ff414e;
   font-size: 16px;
 }
 
 .auth-link:hover {
-  color: #ff91b2;
+  color: #fe626c;
 }
 
 .back-button a {
   font-size: 16px;
   color: #fff;
-  background-color: #e75e8d;
+  background-color: #ff414e;
   padding: 12px 30px;
   display: inline-block;
   border-radius: 25px;
@@ -183,7 +183,7 @@ body {
 .main-button a {
   font-size: 14px;
   color: #fff;
-  background-color: #e75e8d;
+  background-color: #ff414e;
   padding: 12px 30px;
   display: inline-block;
   border-radius: 25px;
@@ -198,5 +198,5 @@ body {
 
 .main-button a:hover {
   background-color: #fff;
-  color: #e75e8d;
+  color: #ff414e;
 }

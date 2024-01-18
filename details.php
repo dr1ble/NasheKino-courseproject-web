@@ -50,7 +50,7 @@ $firstData = $filmData['films'][0];
                 <div class="col-lg-12">
                   <h1>
                     Подробнее о фильме
-                    <br><span style="color: #e75e8d; ">
+                    <br><span style="color: #ff414e; ">
                       <?php echo $filmDetails['CommonName'] ?>
                     </span>
                   </h1>
@@ -150,13 +150,14 @@ $firstData = $filmData['films'][0];
                             $filmTitle = $filmDetails['CommonName'];
 
                             if (!empty($testId)) {
-              
+
                               ?>
                               <a href="main.php?id=<?php echo $testId ?>&film_name=<?php echo $filmTitle; ?>">Перейти к
                                 викторине</a>
                             <?php } else { ?>
-                              <p>Для фильма 
-                                "<?php echo $filmTitle ?>" 
+                              <p>Для фильма
+                                "
+                                <?php echo $filmTitle ?>"
                                 пока нет викторин.
                               </p>
                             <?php } ?>

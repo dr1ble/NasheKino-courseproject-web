@@ -1,5 +1,5 @@
 html[data-theme="light"] .card {
-    background-color: #212529 !important;
+  background-color: #212529 !important;
 }
 /* 
 body {
@@ -13,112 +13,110 @@ body {
 } */
 
 .form-container {
-    max-width: 400px; /* Максимальная ширина контейнера */
-    max-height: 80vh; /* Максимальная высота контейнера */
-    overflow: auto; /* Добавление прокрутки при необходимости */
+  max-width: 400px; /* Максимальная ширина контейнера */
+  max-height: 80vh; /* Максимальная высота контейнера */
+  overflow: auto; /* Добавление прокрутки при необходимости */
 }
 
 .card {
-    box-shadow: 0.0145rem 0.029rem 0.174rem rgba(0, 0, 0, 0.01698),
+  box-shadow: 0.0145rem 0.029rem 0.174rem rgba(0, 0, 0, 0.01698),
     0.0335rem 0.067rem 0.402rem rgba(0, 0, 0, 0.024),
     0.0625rem 0.125rem 0.75rem rgba(0, 0, 0, 0.03),
     0.1125rem 0.225rem 1.35rem rgba(0, 0, 0, 0.036),
     0.2085rem 0.417rem 2.502rem rgba(0, 0, 0, 0.04302),
-    0.5rem 1rem 6rem rgba(0, 0, 0, 0.06),
-    0 0 0 0.0625rem rgba(0, 0, 0, 0.015);
-    background-color: #27292a;
-    border-radius: 0.25rem;
-    padding: 40px;
-    box-sizing: border-box;
-    min-height: 100%;
-    margin-top: 200px;
+    0.5rem 1rem 6rem rgba(0, 0, 0, 0.06), 0 0 0 0.0625rem rgba(0, 0, 0, 0.015);
+  background-color: #27292a;
+  border-radius: 0.25rem;
+  padding: 40px;
+  box-sizing: border-box;
+  min-height: 100%;
+  margin-top: 200px;
 }
 
 form {
-    min-width: 300px;
-    width: 50%; /* Ширина формы 100% */
+  min-width: 300px;
+  width: 50%; /* Ширина формы 100% */
 }
 
 .avatar {
-    width: 200px;
-    height: 200px;
-    display: block;
-    object-fit: cover;
-    border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  display: block;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .home {
-    overflow: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 20px;
-    padding: 100px;
-    padding: 100px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+  padding: 100px;
+  padding: 100px;
 }
 
 .notice {
-    padding: 10px;
-    border-radius: 6px;
-    margin: 20px 0;
+  padding: 10px;
+  border-radius: 6px;
+  margin: 20px 0;
 }
 
 .notice.error {
-    border: 2px solid #762c2c;
-    background: #f3d3d3;
-    color: #762c2c;
+  border: 2px solid #762c2c;
+  background: #f3d3d3;
+  color: #762c2c;
 }
 
 .notice.success {
-    border: 2px solid #2c742b;
-    background: #e1fee3;
-    color: #2c742b;
+  border: 2px solid #2c742b;
+  background: #e1fee3;
+  color: #2c742b;
 }
 
-
 .back-button a {
-    font-size: 14px;
-    color: #fff;
-    background-color: #e75e8d;
-    padding: 12px 30px;
-    display: inline-block;
-    border-radius: 25px;
-    font-weight: 400;
-    text-transform: capitalize;
-    letter-spacing: 0.5px;
-    transition: all .3s;
-    position: relative;
-    overflow: hidden;
-    margin-top: auto;
+  font-size: 14px;
+  color: #fff;
+  background-color: #ff414e;
+  padding: 12px 30px;
+  display: inline-block;
+  border-radius: 25px;
+  font-weight: 400;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  margin-top: auto;
 }
 
 .back-button a:hover {
   background-color: #fff;
-  color: #e75e8d;
+  color: #ff414e;
 }
 
 body {
-    margin: 0;
-    font-family: var(--bs-font-sans-serif);
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #fff !important;
-    background-color: #27292A !important;
-    -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: transparent;
+  margin: 0;
+  font-family: var(--bs-font-sans-serif);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #fff !important;
+  background-color: #27292a !important;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
 }
 .mt-3 {
-    background-color: #f5f5f5;;
+  background-color: #f5f5f5;
 }
 
 .btn-primary {
-    color: #fff !important;
-    background-color: #e75e8d !important;
-    border-color: #e75e8d !important;
+  color: #fff !important;
+  background-color: #ff414e !important;
+  border-color: #ff414e !important;
 }
 
 .btn-primary:hover {
-    background-color: #fff !important;
-    color: #e75e8d !important;
+  background-color: #fff !important;
+  color: #ff414e !important;
 }

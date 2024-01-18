@@ -31,7 +31,7 @@
 
         h4,
         h6 {
-            color: #e75e8d !important;
+            color: #ff414e !important;
             /* Цвет заголовков */
         }
 
@@ -45,7 +45,7 @@
         .submit {
             font-size: 16px;
             color: #fff;
-            background-color: #e75e8d;
+            background-color: #ff414e;
             padding: 12px 30px;
             display: inline-block;
             border-radius: 25px;
@@ -66,7 +66,7 @@
         }
 
         .submit:hover {
-            color: #e75e8d !important;
+            color: #ff414e !important;
             /* Цвет при наведении */
             background-color: #fff;
             color: #ec6090;
@@ -76,7 +76,7 @@
         .back-button a {
             font-size: 16px;
             color: #fff;
-            background-color: #e75e8d;
+            background-color: #ff414e;
             padding: 12px 30px;
             display: inline-block;
             border-radius: 25px;
@@ -121,7 +121,7 @@
         }
 
         a:hover {
-            color: #e75e8d !important;
+            color: #ff414e !important;
             /* Цвет при наведении */
         }
 
@@ -152,7 +152,7 @@
         }
 
         .submit {
-            background-color: #e75e8d;
+            background-color: #ff414e;
             color: #fff;
             border: none;
             padding: 10px 20px;
@@ -199,6 +199,5 @@
             margin-top: 20px;
 
         }
-        
     </style>
 </head>

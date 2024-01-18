@@ -5,7 +5,18 @@
 require_once __DIR__ . '/src/helpers.php';
 $user = currentUser();
 include_once __DIR__ . '/components/head.php';
-include_once __DIR__ . '/components/menumain.php'; ?>
+include_once __DIR__ . '/components/menumain.php';
+// debug(getFilmCountByCategory());
+
+$categories = getFilmCountByCategory();
+$labels = implode(',', array_map(function ($category) {
+  return "'" . ucwords($category) . "'";
+}, array_keys($categories)));
+// var_dump($labels);
+
+$values = implode(',', getFilmCountByCategory());
+// echo $values;
+?>
 
 <body>
 
@@ -27,12 +38,109 @@ include_once __DIR__ . '/components/menumain.php'; ?>
       <div class="col-lg-12">
         <div class="page-content">
 
+          <!-- ***** Start Stream Start ***** -->
+          <div class="start-stream">
+            <div class="col-lg-12">
+              <div class="heading-section">
+                <h4>О приложении</h4>
+                <h5>Наше Кино - клиенториентированное веб-приложение для популяризации отечественного кино из
+                  Фильмофонда «Московское кино», основанное на <a
+                    href="https://data.mos.ru/opendata/1148?pageSize=10&pageIndex=0">открытых данных портала
+                    правительства Москвы.</a> Также для вывода подробной информации о фильмах использовались данные
+                  сайта <a href="https://www.kinopoisk.ru/">Кинопоиск</a>.
+                </h5>
+                <br>
+                <h4>Функциональные возможности</h4>
+              </div>
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="item">
+                    <!-- <div class="icon">
+                      <img src="assets/images/service-01.jpg" alt="" style="max-width: 60px; border-radius: 50%;">
+                    </div> -->
+                    <h4>Фильмы</h4>
+                    <p style="text-align: justify;">В приложении реализованы разные варианты ознакомления с фильмами:
+                      динамически
+                      формирующиеся
+                      карточки (нажмите, чтобы перейти к подробному описанию) на главной странице и в разделе фильмы, а
+                      также живой поиск среди всех фильмов датасета.
+                      <br>** У фильмов, о которых мало информации могут быть некорректно сформированы карточки, а
+                      именно
+                      (постер, описание, данные о рейтинге КП).
+                    </p>
+                    <div class="main-button">
+                      <a href="streams.php">К фильмам</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="item">
+                    <!-- <div class="icon">
+                      <img src="assets/images/service-02.jpg" alt="" style="max-width: 60px; border-radius: 50%;">
+                    </div> -->
+                    <h4>Викторины</h4>
+                    <p style="text-align: justify;">Также реализована система викторин по фильмам с начислением баллов,
+                      пользователь может
+                      проходить викторины по просмотренным фильмам для оценки своих знаний. Найти их вы можете
+                      либо в карточке фильма, если викторина существует, то будет сформирована кнопка перехода к
+                      викторине, либо
+                      через вкладку викторины. Для модераторов сайта создан необходимый функционал их создания
+                      (необходимо авторизоваться через аккаунт модератора)</p>
+                    <div class="main-button">
+                      <a href="main.php">К викторинам</a>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="col-lg-4">
+                  <div class="item">
+                    <!-- <div class="icon">
+                      <img src="assets/images/service-03.jpg" alt="" style="max-width: 60px; border-radius: 50%;">
+                    </div> -->
+                    <h4>Профиль</h4>
+                    <p style="text-align: justify;">Стоит отметить систему профилей. Только после регистрации и
+                      авторизации начнёт хранится
+                      информации о пройденных викторинах и баллах за них. В профиле пользователь может просмотреть
+                      количество пройденных викторин, полученных баллов, а также роли аккаунта. В будущем
+                      планируется расширение функционала профиля, а именно добавление отметок состояний фильмов
+                      (Просмотренное, Понравившееся, Избранное)</p>
+                    <div class="main-button">
+                      <a href="profile.php">К профилю</a>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="col-lg-12">
+                  <div class="main-button">
+                    <!-- <a href="profile.php">В профиль</a> -->
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+          <!-- ***** Start Stream End ***** -->
+
+
           <!-- ***** Featured Games Start ***** -->
+
+
           <div class="row">
+            <div class="col-lg-12">
+              <div class="heading-section text-center">
+                <h4>О данных</h4>
+              </div>
+              <div>
+                <canvas id="myChart"></canvas>
+              </div>
+
+            </div>
             <div class="col-lg-8">
+
               <div class="featured-games header-text">
                 <div class="heading-section">
-                  <h4><em>Рекомендуемые</em> Фильмы</h4>
+                  <h4><em></em> Фильмы</h4>
                 </div>
                 <div class="owl-features owl-carousel">
                   <div class="item">
@@ -119,7 +227,7 @@ include_once __DIR__ . '/components/menumain.php'; ?>
             <div class="col-lg-4">
               <div class="top-downloaded">
                 <div class="heading-section">
-                  <h4><em>Квизы</em></h4>
+                  <h4>Викторины</h4>
                 </div>
                 <ul>
                   <li>
@@ -159,55 +267,10 @@ include_once __DIR__ . '/components/menumain.php'; ?>
               </div>
             </div>
           </div>
-          <!-- ***** Featured Games End ***** -->
-
-          <!-- ***** Start Stream Start ***** -->
-          <div class="start-stream">
-            <div class="col-lg-12">
-              <div class="heading-section">
-                <h4><em>Как работает наш сервис</em></h4>
-              </div>
-              <div class="row">
-                <div class="col-lg-4">
-                  <div class="item">
-                    <div class="icon">
-                      <img src="assets/images/service-01.jpg" alt="" style="max-width: 60px; border-radius: 50%;">
-                    </div>
-                    <h4>НАДО ЗАПОЛНИТЬ</h4>
-                    <p>ОПИСАНИЕ НАДО ЗАПОЛНИТЬ</p>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div class="item">
-                    <div class="icon">
-                      <img src="assets/images/service-02.jpg" alt="" style="max-width: 60px; border-radius: 50%;">
-                    </div>
-                    <h4>НАДО ЗАПОЛНИТЬ</h4>
-                    <p>ОПИСАНИЕ НАДО ЗАПОЛНИТЬ <a href="https://paypal.me/templatemo"
-                        target="_blank">small contribution via PayPal</a></p>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div class="item">
-                    <div class="icon">
-                      <img src="assets/images/service-03.jpg" alt="" style="max-width: 60px; border-radius: 50%;">
-                    </div>
-                    <h4>НАДО ЗАПОЛНИТЬ</h4>
-                    <p>ОПИСАНИЕ НАДО ЗАПОЛНИТЬ </p>
-                  </div>
-                </div>
-                <div class="col-lg-12">
-                  <div class="main-button">
-                    <a href="profile.php">В профиль</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- ***** Start Stream End ***** -->
+          <!-- ***** Featured Games End *****
 
           <!-- ***** Live Stream Start ***** -->
-          
+
           <!-- ***** Live Stream End ***** -->
 
         </div>
@@ -238,7 +301,61 @@ include_once __DIR__ . '/components/menumain.php'; ?>
   <script src="assets/js/tabs.js"></script>
   <script src="assets/js/popup.js"></script>
   <script src="assets/js/custom.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-autocolors"></script>
+
+  <script>
+
+    const autocolors = window['chartjs-plugin-autocolors'];
+    Chart.register(autocolors);
+    const labels = [<?= $labels ?>];
   
+
+    const data = {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Количество фильмов',
+          // data: [11, 16, 7, 3, 14],
+          
+          borderColor: 'rgba(254, 98, 108, 0.437)',
+          hoverOffset: 4,
+          data: [<?= $values ?>],
+        },
+      ],
+    };
+
+    const config = {
+      type: "pie",
+      data: data,
+      options: {
+        indexAxis: 'x',
+        plugins:
+        {
+          legend: {
+            display: true,
+            position: 'bottom'
+          },
+          title: {
+            display: true,
+            text: 'Количество фильмов в каждой категории'
+          },
+          autocolors: {
+            mode: 'data'
+          }
+        }
+      },
+    };
+
+
+
+    const MyChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );
+
+  </script>
 
 </body>
 

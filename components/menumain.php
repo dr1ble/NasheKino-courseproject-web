@@ -131,7 +131,7 @@ if (is_authenticated()) {
     }
 
     .film-card:hover {
-      background-color: #e75e8d !important;
+      background-color: #ff414e !important;
       color: #fff;
     }
 
@@ -170,7 +170,7 @@ if (is_authenticated()) {
 
     .card.mt-5.search-input input.form-control:focus {
       outline: none;
-      box-shadow: 0 0 10px #e75e8d;
+      box-shadow: 0 0 10px #ff414e;
     }
 
     .film-cards-container {

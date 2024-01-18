@@ -38,7 +38,7 @@ checkGuest();
     </style>
 
 <form class="card" action="src/actions/register.php" method="post" enctype="multipart/form-data">
-    <h2 style="color: #e75e8d;">Регистрация</h2>
+    <h2 style="color: #ff414e;">Регистрация</h2>
     <div class="form-group" >
     <label for="name"><br>
         Имя

@@ -44,7 +44,7 @@ $filmDetails = getNFilms(4);
                     </b></h6>
                   <h4><em>Начните </em>свое знакомство<br>здесь</h4>
                   <div class="main-button">
-                    <a href="browse.html">Вперёд</a>
+                    <a href="browse.php">Вперёд</a>
                   </div>
                 </div>
               </div>
@@ -95,7 +95,7 @@ $filmDetails = getNFilms(4);
 
                   <div class="col-lg-12">
                     <div class="main-button">
-                      <a href="browse.html">Подробнее</a>
+                      <a href="streams.php">Больше фильмов</a>
                     </div>
                   </div>
                 </div>

@@ -249,13 +249,13 @@ require_once 'src\filminfo.php';
     .film-card {
         background-color: #fff !important;
         color: #000 !important;
-        border: solid 1px #e75e8d !important;
+        border: solid 1px #ff414e !important;
         padding: 10px;
         cursor: pointer;
     }
 
     .film-card:hover {
-        background-color: #e75e8d !important;
+        background-color: #ff414e !important;
         color: #fff !important;
     }
 </style>

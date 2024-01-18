@@ -4,6 +4,11 @@ session_start();
 
 require_once __DIR__ . '/config.php';
 
+function debug($data)
+{
+    echo '<pre>' . print_r($data, 1). '</pre>';
+}
+
 function redirect(string $path)
 {
     header("Location: $path");
@@ -156,8 +161,8 @@ function countUserScore(string $user_id): array|bool
         // Возвращаем значения по умолчанию
         return [
             'user_id' => $user_id,
-            'unique_tests' => 9,
-            'total_score' => 9,
+            'unique_tests' => 0,
+            'total_score' => 0,
         ];
     }
 }
@@ -187,6 +192,8 @@ function getTestIdByFilm(string $film): ?int
         return null;
     }
 }
+
+
 // $testTitle = "Афоня";
 // $testId = getTestIdByfILM($testTitle);
 
@@ -195,6 +202,59 @@ function getTestIdByFilm(string $film): ?int
 // } else {
 //     echo "Тест с названием '{$testTitle}' не найден.";
 // }
+
+function getCategories(): ?array
+{
+    try {
+        $pdo = getPDO();
+
+        $sql = "SELECT name FROM filmino";
+        $stmt = $pdo->prepare($sql);
+
+        if ($stmt->execute()) {
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            if ($results) {
+                $categories = array_column($results, 'name');
+                return $categories;
+            }
+        }
+
+        return null;
+    } catch (PDOException $e) {
+        // Запись исключения в лог или обработка по необходимости
+        error_log("Исключение PDO: " . $e->getMessage());
+        return null;
+    }
+}
+
+function getFilmCountByCategory(): ?array
+{
+    try {
+        $pdo = getPDO();
+
+        $sql = "SELECT filmino, COUNT(*) AS film_count FROM films GROUP BY filmino";
+        $stmt = $pdo->prepare($sql);
+
+        if ($stmt->execute()) {
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            if ($results) {
+                $filmCounts = [];
+                foreach ($results as $row) {
+                    $filmCounts[$row['filmino']] = (int) $row['film_count'];
+                }
+                return $filmCounts;
+            }
+        }
+
+        return null;
+    } catch (PDOException $e) {
+        // Запись исключения в лог или обработка по необходимости
+        error_log("Исключение PDO: " . $e->getMessage());
+        return null;
+    }
+}
 
 function currentUser(): array|false
 {
