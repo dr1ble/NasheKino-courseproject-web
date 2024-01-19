@@ -168,8 +168,7 @@ $filmDetails = getNFilms(4);
       <div class="row">
         <div class="col-lg-12">
           <p>Копирайт © 2024 Наше кино.
-            <br>Все права зарезирвированы.
-
+            <br>Все права защищены.
         </div>
       </div>
     </div>

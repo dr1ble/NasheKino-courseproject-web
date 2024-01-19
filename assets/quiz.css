@@ -3,6 +3,12 @@
   background: #f7f7f7;
   margin-top: 15px;
 }
+header {
+}
+.mt-2 {
+  margin-top: -2.8rem !important;
+}
+
 textarea {
   height: 150px;
 }
@@ -21,7 +27,7 @@ html,
 body {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
-  background-color: #27292a;
+  background-color: #1f2122;
   font-size: 16px;
   -ms-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
@@ -36,6 +42,7 @@ body {
 
 .card {
   position: relative;
+  padding: 5px;
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -63,14 +70,16 @@ body {
 .primary {
   display: block;
   width: 100%;
+  
   padding: 0.375rem 0.75rem;
+  padding: 10px;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
   color: #090202;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid #ff414e !important;
+  /* border: 1px solid #ff414e !important; */
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -82,9 +91,9 @@ body {
 .primary:focus {
   color: #090202;
   background-color: #fff;
-  border-color: #ff414e !important;
+  border-color: #ff414e9c !important;
   outline: 0;
-  box-shadow: 0 0 0 0.1rem #ff414e !important;
+  box-shadow: 0 0 0 0.03rem #ff414e !important;
 }
 
 .btn:focus {
@@ -123,6 +132,7 @@ body {
 .col-md-6 {
   flex: 0 0 auto;
   width: 75%;
+  margin-top: 100px;
 }
 .btn-success {
   color: #fff;
@@ -199,4 +209,30 @@ body {
 .main-button a:hover {
   background-color: #fff;
   color: #ff414e;
+}
+
+
+
+footer p a {
+  color: #fff;
+  transition: all 0.3s;
+}
+
+footer p a:hover {
+  color: #ff414e;
+}
+.col-md-6 {
+  flex: 0 0 auto;
+  width: 60% !important;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  margin: 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex; /* Добавим свойство display: flex; */
+  justify-content: center; /* Выравниваем содержимое по центру */
 }

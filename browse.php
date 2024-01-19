@@ -69,7 +69,7 @@ $values = implode(',', getFilmCountByCategory());
                       (постер, описание, данные о рейтинге КП).
                     </p>
                     <div class="main-button">
-                      <a href="streams.php">К фильмам</a>
+                      <a href="streams.php">Подробнее</a>
                     </div>
                   </div>
                 </div>
@@ -87,7 +87,7 @@ $values = implode(',', getFilmCountByCategory());
                       через вкладку викторины. Для модераторов сайта создан необходимый функционал их создания
                       (необходимо авторизоваться через аккаунт модератора)</p>
                     <div class="main-button">
-                      <a href="main.php">К викторинам</a>
+                      <a href="main.php">Подробнее</a>
                     </div>
                   </div>
 
@@ -105,7 +105,7 @@ $values = implode(',', getFilmCountByCategory());
                       планируется расширение функционала профиля, а именно добавление отметок состояний фильмов
                       (Просмотренное, Понравившееся, Избранное)</p>
                     <div class="main-button">
-                      <a href="profile.php">К профилю</a>
+                      <a href="profile.php">Подробнее</a>
                     </div>
                   </div>
 
@@ -291,8 +291,7 @@ $values = implode(',', getFilmCountByCategory());
       <div class="row">
         <div class="col-lg-12">
           <p>Копирайт © 2024 Наше кино.
-            <br>Все права зарезирвированы.
-
+            <br>Все права защищены.
         </div>
       </div>
     </div>

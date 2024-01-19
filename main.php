@@ -1,6 +1,8 @@
 <?php
 include_once 'src/config.php';
 require_once 'src\helpers.php';
+$user = currentUser();
+
 
 $db = getConnection();
 // session_start();
@@ -12,10 +14,11 @@ if ($db->connect_error) {
 $testId = (int) $_GET['id'];
 $film_name = $_GET['film_name'];
 // echo "film_name: $film_name";
-
+$pageTitle = 'Наше Кино - Тест по фильму: ' . $film_name;
 
 if ($testId < 1) {
-    header('location: admin.php');
+    header('location: quizes.php
+');
 }
 
 if (!isset($_SESSION['test_id']) || $_SESSION['test_id'] != $testId) {
@@ -84,15 +87,24 @@ if ($questionCount >= $questionNum) {
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Система тестирования</title>
+    <!-- <title>Система тестирования</title> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/quiz.css">
+
 </head>
+<?= include_once __DIR__ . '/components/head.php';
+include_once __DIR__ . '/components/menumain.php'; ?>
 
 <body>
 
-    <div class="container">
+
+    <div class="container" style="margin-top: 150px;">
+        <h2 style="text-align: center;">
+            <?= $testTitle ?>
+        </h2>
+        <br>
         <?php if ($showForm) { ?>
             <form action="main.php?id=<?php echo $testId; ?>&film_name=<?php echo $film_name; ?>" method="post">
                 <input type="hidden" name="q" value="<?php echo $questionNum; ?>">
@@ -113,8 +125,11 @@ if ($questionCount >= $questionNum) {
                             <div class="card-body" style="color: #212529;">
                                 <?php foreach ($answers as $answer) { ?>
                                     <div>
-                                        <input type="radio" name="answer_id" required value="<?php echo $answer['id']; ?>">
-                                        <?php echo $answer['answer']; ?>
+                                        <input type="radio" id="answer_<?php echo $answer['id']; ?>" name="answer_id" required
+                                            value="<?php echo $answer['id']; ?>">
+                                        <label for="answer_<?php echo $answer['id']; ?>">
+                                            <?php echo $answer['answer']; ?>
+                                        </label>
                                     </div>
                                 <?php } ?>
                             </div>
@@ -140,7 +155,7 @@ if ($questionCount >= $questionNum) {
                             <div class="result-print">
                                 <?php echo $result; ?>
                             </div>
-                            
+
                             <!-- Вам начислено блок с использованием Bootstrap классов -->
                             <div class="score-block mt-3">
                                 <div class="font-weight-bold">
@@ -150,7 +165,7 @@ if ($questionCount >= $questionNum) {
                             </div>
                             <!-- Кнопка "Назад на сайт" -->
                             <div class="mt-3">
-                                <a href="index.php" class="btn btn-primary">Назад на сайт</a>
+                                <a href="profile.php" class="btn btn-primary">В профиль</a>
                             </div>
                         </div>
                     </div>
@@ -158,6 +173,16 @@ if ($questionCount >= $questionNum) {
             </div>
         <?php } ?>
     </div>
+    <footer style="width: 100%" ;>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center" style="color: white" ;>
+                    <p>Копирайт © 2024 Наше кино.
+                        <br>Все права защищены
+                </div>
+            </div>
+        </div>
+    </footer>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

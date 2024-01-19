@@ -140,7 +140,7 @@ if ($result->num_rows > 0) {
 
           <!-- ***** Featured Games Start ***** -->
           <div class="row d-flex align-items-stretch">
-            <div class="col-lg-8">
+            <div class="col-lg-12">
               <div class="featured-games header-text">
                 <div class="heading-section">
                   <h4>Подборка фильмов</h4>
@@ -185,74 +185,7 @@ if ($result->num_rows > 0) {
               </div>
 
             </div>
-            <div class="col-lg-4">
-              <div class="top-streamers">
-                <div class="heading-section">
-                  <h4>Категории</h4>
-                </div>
-                <ul>
-                  <li>
-                    <!-- <span>01</span> -->
-                    <img src="assets/images/<?php echo $categories[0]; ?>.svg" alt=""
-                      style="max-width: 36px; border-radius: 0%; margin-right: 15px;">
-                    <h6><i class="fa fa-check"></i> <a href="#">
-                        <?php echo ucfirst($categories[0]); ?>
-                      </a></h6>
-                    <!-- <div class="main-button">
-                      <a href="#">Follow</a>
-                    </div> -->
-                  </li>
-                  <li>
-                    <!-- <span>02</span> -->
-                    <img src="assets/images/<?php echo $categories[1]; ?>.svg" alt=""
-                      style="max-width: 36px; border-radius: 0%; margin-right: 15px;">
-                    <h6><i class="fa fa-check"></i> <a href="#">
-                        <?php echo ucfirst($categories[1]); ?>
-                      </a></h6>
-                    <!-- <div class="main-button">
-                      <a href="#">Follow</a>
-                    </div> -->
-                  </li>
-                  <li>
-                    <!-- <span>03</span> -->
-                    <img src="assets/images/<?php echo $categories[2]; ?>.svg" alt=""
-                      style="max-width: 36px; border-radius: 0%; margin-right: 15px;">
-                    <h6><i class="fa fa-check"></i> <a href="#">
-                        <?php echo ucfirst($categories[2]); ?>
-                      </a></h6>
-                    <!-- <div class="main-button">
-                      <a href="#">Follow</a>
-                    </div> -->
-                  </li>
-                  <li>
-                    <!-- <span>04</span> -->
-                    <!-- <img src="assets/images/avatar-04.jpg" alt="" style="max-width: 46px; border-radius: 50%; margin-right: 15px;"> -->
-                    <img src="assets/images/<?php echo $categories[3]; ?>.svg" alt=""
-                      style="max-width: 36px; border-radius: 0%; margin-right: 15px;">
-                    <h6><i class="fa fa-check"></i> <a href="#">
-                        <?php echo ucfirst($categories[3]); ?>
-                      </a></h6>
-                    <!-- <div class="main-button">
-                      <a href="#">Follow</a>
-                    </div> -->
-                  </li>
-                  <li>
-                    <!-- <span>05</span> -->
-                    <img src="assets/images/<?php echo $categories[4]; ?>.svg" alt=""
-                      style="max-width: 36px; border-radius: 0%; margin-right: 15px;">
-                    <h6><i class="fa fa-check"></i> <a href="#">
-                        <?php echo ucfirst((string) $categories[4]); ?>
-                      </a></h6>
 
-                    <br>
-                  </li>
-
-                </ul>
-                <div class="main-button text-center" style="margin-top: 15px;">
-                  <a href="#" id="moreCategoriesBtn">Больше категорий</a>
-                </div>
-              </div>
-            </div>
             <!-- <div class="col-lg-12">
               <div class="main-button" style="text-align: center;">
                 <a href="profile.html">К фильмотетке</a>
@@ -279,16 +212,16 @@ if ($result->num_rows > 0) {
                       <option value="<?php echo $category; ?>">
                         <?php echo $category; ?>
                       </option>
-                      
+
                     <?php endforeach; ?>
                   </select>
-                  
+
                   <ul id="filmList">
                     <br>
                     <?php foreach ($allFilms as $film): ?>
                       <li class="film-group">
                         <h4><a href="details.php?film_name=<?php echo urlencode($film['CommonName']); ?>">
-                        
+
                             <?php echo $film['CommonName'] . ' ' . $film['Year']; ?>
                           </a></h4>
                         <ul class="film-details">
@@ -320,8 +253,7 @@ if ($result->num_rows > 0) {
         <div class="row">
           <div class="col-lg-12">
             <p>Копирайт © 2024 Наше кино.
-              <br>Все права зарезирвированы.
-
+              <br>Все права защищены.
 
           </div>
         </div>
@@ -350,8 +282,8 @@ if ($result->num_rows > 0) {
 
         // Функция обработки нажатия на кнопку "Показать еще"
         $("#showMoreBtn").click(function () {
-          visibleFilms += 15; // увеличиваем количество отображаемых фильмов на 10
-          films.slice(0, visibleFilms).show(); // отображаем фильмы до нового значения visibleFilms
+          visibleFilms += 15; // увеличиваем количество отображаемых фильмов на 15
+          films.hide().slice(0, visibleFilms).show(); // отображаем фильмы до нового значения visibleFilms
           if (visibleFilms >= films.length) {
             $("#showMoreBtn").hide(); // скрываем кнопку, если все фильмы отображены
           }
@@ -360,8 +292,16 @@ if ($result->num_rows > 0) {
         // Функция для фильтрации фильмов по категориям
         $("#filterCategory").change(function () {
           var selectedCategory = $(this).val();
-          films.hide().filter(":contains('" + selectedCategory + "')").slice(0, visibleFilms).show();
-          $("#showMoreBtn").show(); // показываем кнопку, так как фильтрация может изменить видимые фильмы
+          var visibleFilmsInCategory = films.filter(":contains('" + selectedCategory + "')").length;
+          var totalVisibleFilms = Math.min(visibleFilmsInCategory, visibleFilms);
+
+          films.hide().filter(":contains('" + selectedCategory + "')").slice(0, totalVisibleFilms).show();
+
+          if (visibleFilmsInCategory <= visibleFilms) {
+            $("#showMoreBtn").hide(); // скрываем кнопку, если в категории мало фильмов
+          } else {
+            $("#showMoreBtn").show(); // показываем кнопку, если в категории есть еще фильмы
+          }
         });
       });
     </script>

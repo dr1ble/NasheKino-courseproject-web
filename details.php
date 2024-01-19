@@ -132,6 +132,7 @@ $firstData = $filmData['films'][0];
                               <?php echo $filmDetails['IsColor'] ?>
                             </span></li>
                         </ul>
+                        <br>
                       </div>
                     </div>
 
@@ -176,7 +177,7 @@ $firstData = $filmData['films'][0];
             <!-- ***** Details End ***** -->
 
             <!-- ***** Other Start ***** -->
-            <div class="other-games">
+            <!-- <div class="other-games">
               <div class="row">
                 <div class="col-lg-12">
                   <div class="heading-section">
@@ -244,7 +245,7 @@ $firstData = $filmData['films'][0];
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
             <!-- ***** Other End ***** -->
 
           </div>
@@ -256,7 +257,7 @@ $firstData = $filmData['films'][0];
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <p>Копирайт © 2024 Наше кино. <br>Все права зарезервированы.</p>
+            <p>Копирайт © 2024 Наше кино. <br>Все права защищены.</p>
           </div>
         </div>
       </div>

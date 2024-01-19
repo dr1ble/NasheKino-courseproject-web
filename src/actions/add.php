@@ -67,8 +67,9 @@ require_once 'src\filminfo.php';
     });
 </script>
 
-<div class="col-md-6">
-    <form action="admin.php?do=save" method="post">
+<div class="col-md-6" style="margin-top:-60px; padding: 5px">
+    <form action="quizes.php
+?do=save" method="post">
         <div class="card mt-4">
             <div class="card-header">
                 <h2 class="text-center">Добавление теста</h2>
@@ -96,7 +97,9 @@ require_once 'src\filminfo.php';
                             </div>
                         </div>
                         <div class="mt-5 text-center">
-                            <h4>Добавление вопросов</h4>
+                            <br>
+                            <h4 style="color: black">Добавление вопросов</h4>
+
                         </div>
                         <div class="questions">
                             <div class="question-items">
@@ -132,7 +135,8 @@ require_once 'src\filminfo.php';
                         </div>
 
                         <div class="mt-5 text-center">
-                            <h4>Добавление результатов</h4>
+                            <br>
+                            <h4 style="color:black;">Добавление результатов</h4>
                         </div>
                         <div class="results">
                             <div class="result-items">
@@ -167,7 +171,8 @@ require_once 'src\filminfo.php';
                 </div>
                 <div style="display: flex; align-items: center; justify-content: center;">
                     <div class="main-button">
-                        <br><a href="admin.php" class="back-button" style="text-decoration: none;">Назад</a>
+                        <br><a href="quizes.php
+" class="back-button" style="text-decoration: none;">Назад</a>
                     </div>
                 </div>
     </form>
@@ -257,5 +262,9 @@ require_once 'src\filminfo.php';
     .film-card:hover {
         background-color: #ff414e !important;
         color: #fff !important;
+    }
+
+    footer {
+        position: relative !important;
     }
 </style>

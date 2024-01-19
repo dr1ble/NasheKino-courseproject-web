@@ -50,7 +50,9 @@ include_once __DIR__ . '/components/menumain.php';
                         <?php echo "Привет, " . $user['name'] . "!"; ?>
                       </h4>
                       <p>Количество набранных вами баллов за викторины:</p>
-                      <h5><?php echo $stats['total_score']?></h5>
+                      <h5>
+                        <?php echo $stats['total_score'] ?>
+                      </h5>
                       <br>
                       <div class="main-button text-center">
                         <form action="src/actions/logout.php" method="post">
@@ -62,14 +64,16 @@ include_once __DIR__ . '/components/menumain.php';
                   </div>
                   <div class="col-lg-4 align-self-center">
                     <ul>
-                      <li>Фильмов просмотрено <span>3</span></li>
-                      <li>Надо просмотреть<span>5</span></li>
-                      <li>Квизов пройдено <span><?php echo $stats['unique_tests'] ?></span></li>
+                      <!-- <li>Фильмов просмотрено <span>3</span></li>
+                      <li>Надо просмотреть<span>5</span></li> -->
+                      <li>Квизов пройдено <span>
+                          <?php echo $stats['unique_tests'] ?>
+                        </span></li>
                       <!-- <li>Роль<span>Пользователь</span></li> -->
                     </ul>
                   </div>
                 </div>
-                <div class="row">
+                <!-- <div class="row">
                   <div class="col-lg-12">
                     <div class="clips">
                       <div class="row">
@@ -138,14 +142,14 @@ include_once __DIR__ . '/components/menumain.php';
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
           <!-- ***** Banner End ***** -->
 
           <!-- ***** Gaming Library Start ***** -->
-          <div class="gaming-library profile-library">
+          <!-- <div class="gaming-library profile-library">
             <div class="col-lg-12">
               <div class="heading-section">
                 <h4><em>Your Gaming</em> Library</h4>
@@ -211,7 +215,7 @@ include_once __DIR__ . '/components/menumain.php';
                 </ul>
               </div>
             </div>
-          </div>
+          </div> -->
           <!-- ***** Gaming Library End ***** -->
         </div>
       </div>
@@ -223,7 +227,7 @@ include_once __DIR__ . '/components/menumain.php';
       <div class="row">
         <div class="col-lg-12">
           <p>Копирайт © 2024 Наше кино.
-            <br>Все права зарезирвированы.
+            <br>Все права защищены.
         </div>
       </div>
   </footer>

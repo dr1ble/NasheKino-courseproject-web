@@ -24,7 +24,7 @@ require_once 'src\helpers.php';
                 <div class="text-center"> <!-- Добавлен контейнер с классом text-center для центрирования -->
                     <br>
                     <p><a href="login.php" class="auth-link">Авторизуйтесь</a>, чтобы сохранять информацию о пройденных
-                        викторинах.</p>
+                        викторинах.</p> <br>
                 </div>
             <?php endif; ?>
         </div>
@@ -32,13 +32,13 @@ require_once 'src\helpers.php';
     <?php if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] == 1): ?>
         <div class="card mt-4">
             <div class="card-body text-center">
-                <a href="admin.php?do=add" class="btn btn-primary">Добавить тест</a>
+
+                <a href="quizes.php
+?do=add" class="btn btn-primary">Добавить тест</a>
             </div>
 
         </div>
     <?php endif; ?>
     <div style="display: flex; align-items: center; justify-content: center;">
-        <div class="main-button">
-            <br><a href="index.php" class="back-button" style="text-decoration: none;">на сайт</a>
-        </div>
+
     </div>
