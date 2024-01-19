@@ -1,5 +1,5 @@
 <?php
-require_once 'src\helpers.php';
+require_once __DIR__ . '/../helpers.php';
 ?>
 <div class="col-md-6">
     <div class="card mt-4">
@@ -33,8 +33,7 @@ require_once 'src\helpers.php';
         <div class="card mt-4">
             <div class="card-body text-center">
 
-                <a href="quizes.php
-?do=add" class="btn btn-primary">Добавить тест</a>
+                <a href="quizes.php?do=add" class="btn btn-primary">Добавить тест</a>
             </div>
 
         </div>

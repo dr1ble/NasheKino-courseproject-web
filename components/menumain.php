@@ -102,7 +102,7 @@ if (is_authenticated()) {
             <li><a href="index.php">Главная</a></li>
             <li><a href="browse.php">Обзор</a></li>
             <li><a href="streams.php">Фильмы</a></li>
-            <li><a href="main.php">Викторины</a></li>
+            <li><a href="quizes.php">Викторины</a></li>
             <li>
               <a href="<?php echo $profileUrl; ?>">Профиль<img
                   src="<?php echo $user ? $user['avatar'] : 'assets/images/profile-header.jpg'; ?>"

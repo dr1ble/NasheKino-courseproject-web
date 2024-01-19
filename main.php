@@ -1,6 +1,6 @@
 <?php
 include_once 'src/config.php';
-require_once 'src\helpers.php';
+require_once __DIR__ . '/src/helpers.php';
 $user = currentUser();
 
 
@@ -17,8 +17,7 @@ $film_name = $_GET['film_name'];
 $pageTitle = 'Наше Кино - Тест по фильму: ' . $film_name;
 
 if ($testId < 1) {
-    header('location: quizes.php
-');
+    header('location: quizes.php');
 }
 
 if (!isset($_SESSION['test_id']) || $_SESSION['test_id'] != $testId) {

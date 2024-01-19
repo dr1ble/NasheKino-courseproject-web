@@ -1,6 +1,7 @@
 <?php
 include_once 'src/config.php';
-require_once 'src\helpers.php';
+require_once __DIR__ . '/src/helpers.php';
+
 $user = currentUser();
 $pageTitle = 'Наше Кино - Викторины';
 
@@ -60,8 +61,7 @@ if ($do == 'save') {
         $resultNum++;
     }
 
-    header('Location: quizes.php
-?do=list');
+    header('Location: quizes.php?do=list');
 }
 
 if ($do != 'add') {

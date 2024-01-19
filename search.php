@@ -1,5 +1,5 @@
 <?php
-require 'src/config.php'; // Подключение к базе данных
+require 'src\config.php'; // Подключение к базе данных
 
 if (!$conn) {
     die("Ошибка подключения к базе данных: " . $db->getConnectionError());
